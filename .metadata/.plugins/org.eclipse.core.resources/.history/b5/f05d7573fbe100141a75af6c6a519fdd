@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <ListView
+        android:id="@+id/listViewMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageViewHeader"
+        android:layout_marginLeft="45dip"
+        android:layout_marginRight="45dip"
+        android:background="@drawable/background"
+        android:shape="oval"          
+        android:maxHeight="50dp"
+        android:maxWidth="50dp"
+        android:dividerHeight="5dip" >
+
+    </ListView>
+
+    <TextView
+        android:id="@+id/textViewHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/listViewMain"
+        android:layout_toRightOf="@+id/imageViewHeader"
+        android:paddingBottom="40dip"
+        android:text="Mind Master"
+        android:textColor="#FFFFFF"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageView
+        android:id="@+id/imageViewHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/listViewMain"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="24dp"
+        android:adjustViewBounds="true"
+        android:maxHeight="100dp"
+        android:maxWidth="100dp"
+        android:paddingBottom="30dip"
+        android:paddingTop="20dip"
+        android:src="@drawable/logo" />
+
+</RelativeLayout>

@@ -1,0 +1,36 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_background"
+    tools:context="com.example.mindmaster.MemoryTiles" >
+    
+    <ImageView
+        android:id="@+id/imageViewHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:adjustViewBounds="true"
+        android:maxHeight="100dp"
+        android:maxWidth="100dp"
+        android:paddingBottom="30dip"
+        android:paddingTop="20dip"
+        android:src="@drawable/img_header_banner" />
+
+    <GridView
+        android:id="@+id/gridView_Tile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/imageViewHeader"
+        android:gravity="center"
+        android:columnWidth="50dp"
+        android:isScrollContainer="false"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/img_background"
+        android:numColumns="4" >
+
+    </GridView>
+
+</RelativeLayout>

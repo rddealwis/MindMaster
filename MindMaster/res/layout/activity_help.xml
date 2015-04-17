@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_background"
+    tools:context="com.infinity.mindmaster.Help" >
+
+     <ImageView
+        android:id="@+id/imageViewHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:adjustViewBounds="true"
+        android:maxHeight="100dp"
+        android:maxWidth="100dp"
+        android:paddingBottom="30dip"
+        android:paddingTop="20dip"
+        android:src="@drawable/img_header_banner" />
+
+     <ImageView
+         android:id="@+id/imageViewHelp"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_alignParentLeft="true"
+         android:layout_alignParentTop="true"
+         android:layout_marginTop="62dp"
+         android:src="@drawable/img_help_banner" />
+
+     <TextView
+         android:id="@+id/textViewDescription"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/imageViewHelp"
+         android:layout_marginLeft="15dp"    
+         android:layout_marginRight="15dp"  
+         android:paddingTop="10dip"
+         android:paddingBottom="10dip"
+         android:paddingLeft="10dip"
+         android:paddingRight="10dip"
+         android:textAppearance="?android:attr/textAppearanceMedium"
+         android:isScrollContainer="true"
+         android:scrollbars="vertical"
+         android:gravity="center_horizontal"
+         android:scrollbarStyle="outsideOverlay"
+         android:textColor="#FFFFFF"
+         android:fadingEdge="vertical"
+         android:background="@drawable/img_background"
+         android:bufferType="spannable" />
+
+</RelativeLayout>

@@ -1,0 +1,47 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_background"
+    tools:context="com.infinity.mindmaster.SplashScreen" >
+
+    <ImageView
+        android:id="@+id/imageViewHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:adjustViewBounds="true"
+        android:maxHeight="100dp"
+        android:maxWidth="100dp"
+        android:paddingBottom="20dip"
+        android:paddingTop="20dip"
+        android:src="@drawable/img_header_banner" />
+
+    <ImageView
+        android:id="@+id/imageViewIcon"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageViewHeader"
+        android:layout_centerHorizontal="true"
+        android:adjustViewBounds="true"
+        android:paddingTop="20dip"
+        android:paddingLeft="75dip"
+        android:paddingRight="75dip"
+        android:paddingBottom="15dip"
+        android:src="@drawable/img_splash_logo" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageViewIcon"
+        android:layout_marginBottom="30dp"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip"
+        android:paddingTop="10dip"
+        android:gravity="center"
+        android:text="Be the best on each mode and test how good your short term memory is."
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FFFFFF" />
+
+</RelativeLayout>

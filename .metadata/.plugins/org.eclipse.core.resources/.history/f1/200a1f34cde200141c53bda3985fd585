@@ -1,0 +1,33 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context="com.example.mindmaster.GameSettings" >
+    
+    <TextView
+         android:id="@+id/textViewHeader"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignBottom="@+id/imageViewHeader"
+         android:layout_toRightOf="@+id/imageViewHeader"
+         android:paddingBottom="40dip"
+         android:text="Mind Master"
+         android:textAppearance="?android:attr/textAppearanceLarge"
+         android:textColor="#FFFFFF" />
+
+     <ImageView
+         android:id="@+id/imageViewHeader"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentLeft="true"
+         android:layout_alignParentTop="true"
+         android:layout_marginLeft="71dp"
+         android:adjustViewBounds="true"
+         android:maxHeight="100dp"
+         android:maxWidth="100dp"
+         android:paddingBottom="30dip"
+         android:paddingTop="20dip"
+         android:src="@drawable/logo" />
+
+</RelativeLayout>
