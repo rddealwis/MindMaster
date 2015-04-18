@@ -17,22 +17,46 @@
         android:paddingTop="20dip"
         android:src="@drawable/img_header_banner" />
 
-    <GridView
-        android:id="@+id/gridView_Tile"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@+id/imageViewHeader"
-        android:layout_marginBottom="15dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:columnWidth="40dp"
+    <TableLayout
+        android:id="@+id/tile_Table"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        android:stretchMode="columnWidth"
-        android:horizontalSpacing="0dp"
-        android:numColumns="4"
-        android:verticalSpacing="0dp" >
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_below="@+id/imageViewHeader" >
 
-    </GridView>
+        <TableRow
+            android:id="@+id/tile_Row1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            
+            <TextView
+                android:id="@+id/tile_column1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/img_tile" />
+            
+            <TextView
+                android:id="@+id/tile_column2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/img_tile" />
+            
+            <TextView
+                android:id="@+id/tile_column3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/img_tile" />
+            
+            <TextView
+                android:id="@+id/tile_column4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/img_tile" />
+            
+        </TableRow>
+    </TableLayout>
 
 </RelativeLayout>

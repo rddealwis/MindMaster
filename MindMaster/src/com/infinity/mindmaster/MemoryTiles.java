@@ -6,29 +6,53 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.GridView;
-import android.widget.Toast;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 
 public class MemoryTiles extends ActionBarActivity {
+
+	TextView column1,column2,column3,column4;
+	TableLayout tableLayout;
+	TableRow tableRow;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_memory_tiles);
 		
-		GridView gridview = (GridView) findViewById(R.id.gridView_Tile);
-	    gridview.setAdapter(new LoadTileIcons(this));
-
-	    gridview.setOnItemClickListener(new OnItemClickListener() {
-	        public void onItemClick(AdapterView<?> parent, View v,
-	                int position, long id) {
-	            Toast.makeText(MemoryTiles.this, "" + position,
-	                    Toast.LENGTH_SHORT).show();
-	        }
-	    });
+		column1 = (TextView)findViewById(R.id.tile_column1);
+		column2 = (TextView)findViewById(R.id.tile_column2);
+		column3 = (TextView)findViewById(R.id.tile_column3);
+		column4 = (TextView)findViewById(R.id.tile_column4);
+		
+		tableLayout = (TableLayout)findViewById(R.id.tile_Table);
+		tableLayout.setColumnStretchable(0, true);
+		tableLayout.setColumnStretchable(1, true);
+		tableLayout.setColumnStretchable(2, true);
+		tableLayout.setColumnStretchable(3, true);
+		
+		for(int i=0;i<3;i++)
+		{
+			tableRow = new TableRow(this);
+			
+			column1 = new TextView(this);
+			column2 = new TextView(this);
+			column3 = new TextView(this);
+			column4 = new TextView(this);
+			
+			column1.setBackgroundResource(R.drawable.img_tile);
+			column2.setBackgroundResource(R.drawable.img_tile);
+			column3.setBackgroundResource(R.drawable.img_tile);
+			column4.setBackgroundResource(R.drawable.img_tile);
+			
+			tableRow.addView(column1);
+			tableRow.addView(column2);
+			tableRow.addView(column3);
+			tableRow.addView(column4);
+			
+			tableLayout.addView(tableRow);		
+		}		
 	}
 
 	@Override
