@@ -19,15 +19,19 @@
 
     <GridView
         android:id="@+id/gridView_Tile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_alignParentBottom="true"
         android:layout_below="@+id/imageViewHeader"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:columnWidth="40dp"
         android:gravity="center"
-        android:columnWidth="45dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:numColumns="4" >
+        android:stretchMode="columnWidth"
+        android:horizontalSpacing="0dp"
+        android:numColumns="4"
+        android:verticalSpacing="0dp" >
 
     </GridView>
 
