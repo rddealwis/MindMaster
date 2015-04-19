@@ -102,8 +102,7 @@ public class MemoryTiles extends ActionBarActivity {
 	public void TilesColorChange() {
 		int value = 0;
 		for (int count = 0; count < randomNumbers.size(); count++) {
-			value = (Integer) randomNumbers.get(count);
-			final int valuetemp=value;			
+			value = (Integer) randomNumbers.get(count);	
 			gridview.performItemClick(
 					gridview.getAdapter().getView(value, null, null), 
 					value,
@@ -145,6 +144,7 @@ public class MemoryTiles extends ActionBarActivity {
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog,
 									int which) {
+								checkCount=0;
 								finish();
 							}
 						});
