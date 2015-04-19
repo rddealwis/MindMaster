@@ -13,8 +13,8 @@
         android:adjustViewBounds="true"
         android:maxHeight="100dp"
         android:maxWidth="100dp"
-        android:paddingBottom="30dip"
-        android:paddingTop="20dip"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
         android:src="@drawable/img_header_banner" />
 
     <ImageView

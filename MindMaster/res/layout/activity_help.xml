@@ -13,8 +13,8 @@
         android:adjustViewBounds="true"
         android:maxHeight="100dp"
         android:maxWidth="100dp"
-        android:paddingBottom="30dip"
-        android:paddingTop="20dip"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
         android:src="@drawable/img_header_banner" />
 
      <ImageView
@@ -33,10 +33,10 @@
          android:layout_below="@+id/imageViewHelp"
          android:layout_marginLeft="15dp"    
          android:layout_marginRight="15dp"  
-         android:paddingTop="10dip"
-         android:paddingBottom="10dip"
-         android:paddingLeft="10dip"
-         android:paddingRight="10dip"
+         android:paddingTop="10dp"
+         android:paddingBottom="10dp"
+         android:paddingLeft="10dp"
+         android:paddingRight="10dp"
          android:textAppearance="?android:attr/textAppearanceMedium"
          android:isScrollContainer="true"
          android:scrollbars="vertical"

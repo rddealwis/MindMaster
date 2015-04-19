@@ -10,6 +10,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 public class LoadTileIcons extends BaseAdapter {
+	
 	private Context mContext;
 
 	public LoadTileIcons(Context c) {
@@ -32,9 +33,10 @@ public class LoadTileIcons extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		
 		ImageView imageView;
+		
 		int tileWidth = (int) (mContext.getResources().getDimension(R.dimen.activity_tile_width));
 		int tileHeight = (int) (mContext.getResources().getDimension(R.dimen.activity_tile_height));
-		  
+		
 		if (convertView == null) {
 			// if it's not recycled, initialize some attributes
 			imageView = new ImageView(mContext);
@@ -48,7 +50,7 @@ public class LoadTileIcons extends BaseAdapter {
 		imageView.setImageResource(mThumbIds[position]);
 		return imageView;
 	}
-
+	
 	// references to our images
 	public static Integer[] mThumbIds = { R.drawable.img_tile, R.drawable.img_tile, R.drawable.img_tile, R.drawable.img_tile, 
 			R.drawable.img_tile, R.drawable.img_tile, R.drawable.img_tile, R.drawable.img_tile,

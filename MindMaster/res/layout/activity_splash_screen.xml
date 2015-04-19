@@ -13,8 +13,8 @@
         android:adjustViewBounds="true"
         android:maxHeight="100dp"
         android:maxWidth="100dp"
-        android:paddingBottom="20dip"
-        android:paddingTop="20dip"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
         android:src="@drawable/img_header_banner" />
 
     <ImageView
@@ -24,10 +24,10 @@
         android:layout_below="@+id/imageViewHeader"
         android:layout_centerHorizontal="true"
         android:adjustViewBounds="true"
-        android:paddingTop="15dip"
-        android:paddingLeft="75dip"
-        android:paddingRight="75dip"
-        android:paddingBottom="15dip"
+        android:paddingTop="15dp"
+        android:paddingLeft="75dp"
+        android:paddingRight="75dp"
+        android:paddingBottom="15dp"
         android:src="@drawable/img_splash_logo" />
 
     <TextView
@@ -36,9 +36,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageViewIcon"
         android:layout_marginBottom="30dp"
-        android:paddingLeft="10dip"
-        android:paddingRight="10dip"
-        android:paddingTop="10dip"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
         android:gravity="center"
         android:text="Be the best on each mode and test how good your short term memory is."
         android:textAppearance="?android:attr/textAppearanceMedium"

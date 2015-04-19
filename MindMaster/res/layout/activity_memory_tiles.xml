@@ -13,26 +13,63 @@
         android:adjustViewBounds="true"
         android:maxHeight="100dp"
         android:maxWidth="100dp"
-        android:paddingBottom="30dip"
-        android:paddingTop="20dip"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
         android:src="@drawable/img_header_banner" />
-
-    <GridView
-        android:id="@+id/gridView_Tile"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+    
+    <RelativeLayout
+        android:id="@+id/relLayoutPlayArea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_below="@+id/imageViewHeader"
-        android:layout_marginBottom="15dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:columnWidth="60dp"
-        android:gravity="center"
-        android:stretchMode="none"
-        android:horizontalSpacing="0dp"
-        android:numColumns="4"
-        android:verticalSpacing="0dp" >
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/imageViewHeader"
+        android:layout_centerInParent="true">
+        
+        <TextView
+	        android:id="@+id/TextViewLevelNo"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+	        android:layout_alignParentTop="true"
+	        android:layout_marginLeft="15dp"
+	        android:textColor="#FFFFFF"
+	        android:text="Level: 0"	        
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    </GridView>
+	    <TextView
+	        android:id="@+id/textViewScore"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:layout_alignParentTop="true"
+	        android:layout_marginRight="15dp"
+	        android:textColor="#FFFFFF"
+	        android:text="Score: 0"	        
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+	    <GridView
+	        android:id="@+id/gridView_Tile"
+	        android:layout_width="240dp"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/TextViewLevelNo"        
+	        android:layout_centerHorizontal="false"
+	        android:layout_centerInParent="true"
+	        android:layout_centerVertical="false"
+	        android:layout_marginBottom="15dp"
+	        android:layout_marginLeft="20dp"
+	        android:layout_marginRight="20dp"
+	        android:layout_marginTop="15dp"
+	        android:gravity="center"	        
+	        android:columnWidth="60dp"
+	        android:horizontalSpacing="0dp"
+	        android:numColumns="4"
+	        android:stretchMode="none"
+	        android:verticalSpacing="0dp" >
+
+	    </GridView>
+    
+	</RelativeLayout>
 
 </RelativeLayout>
