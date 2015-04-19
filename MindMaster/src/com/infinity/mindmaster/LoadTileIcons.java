@@ -32,11 +32,13 @@ public class LoadTileIcons extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		
 		ImageView imageView;
-		
+		int tileWidth = (int) (mContext.getResources().getDimension(R.dimen.activity_tile_width));
+		int tileHeight = (int) (mContext.getResources().getDimension(R.dimen.activity_tile_height));
+		  
 		if (convertView == null) {
 			// if it's not recycled, initialize some attributes
 			imageView = new ImageView(mContext);
-			imageView.setLayoutParams(new GridView.LayoutParams(50, 50));
+			imageView.setLayoutParams(new GridView.LayoutParams(tileWidth, tileHeight));
 			imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 			imageView.setPadding(0, 0, 0, 0);
 		} else {
@@ -48,7 +50,7 @@ public class LoadTileIcons extends BaseAdapter {
 	}
 
 	// references to our images
-	private Integer[] mThumbIds = { R.drawable.img_tile, R.drawable.img_tile, R.drawable.img_tile, R.drawable.img_tile, 
+	public static Integer[] mThumbIds = { R.drawable.img_tile, R.drawable.img_tile, R.drawable.img_tile, R.drawable.img_tile, 
 			R.drawable.img_tile, R.drawable.img_tile, R.drawable.img_tile, R.drawable.img_tile,
 			R.drawable.img_tile, R.drawable.img_tile, R.drawable.img_tile, R.drawable.img_tile, 
 			R.drawable.img_tile, R.drawable.img_tile, R.drawable.img_tile, R.drawable.img_tile };

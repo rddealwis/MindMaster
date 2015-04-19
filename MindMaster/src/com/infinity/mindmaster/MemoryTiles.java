@@ -7,7 +7,12 @@ import javax.microedition.khronos.opengles.GL;
 
 import com.example.mindmaster.R;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,6 +32,7 @@ public class MemoryTiles extends ActionBarActivity {
 	public int gameLevel = 4;
 	public int checkCount = 0;
 	public boolean test = false;
+	public boolean correct = true;
 	GridView gridview = null;
 
 	@Override
@@ -39,12 +45,17 @@ public class MemoryTiles extends ActionBarActivity {
 		gridview.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View v,
 					int position, long id) {
-				Toast.makeText(MemoryTiles.this,
-						"" + position + " " + v.toString() + " " + id,
-						Toast.LENGTH_SHORT).show();
 				if (test) {
-					CheckUserInput(position);
+					if(CheckUserInput(position)){
+						
+						GamePlay();
+					}
 				}
+				else{
+					Toast.makeText(MemoryTiles.this,
+							position + " blinked",
+							Toast.LENGTH_SHORT).show();
+					}
 			}
 		});
 	}
@@ -82,7 +93,7 @@ public class MemoryTiles extends ActionBarActivity {
 		Random rand = new Random();
 		for (int generateCount = 0; generateCount < amount; generateCount++) {
 
-			randomNumbers.add(rand.nextInt((amount - 1) + 1) + 1);
+			randomNumbers.add(rand.nextInt((16 - 1) + 1) + 1);
 
 		}
 
@@ -92,39 +103,75 @@ public class MemoryTiles extends ActionBarActivity {
 		int value = 0;
 		for (int count = 0; count < randomNumbers.size(); count++) {
 			value = (Integer) randomNumbers.get(count);
-
+			final int valuetemp=value;			
 			gridview.performItemClick(
-					gridview.getAdapter().getView(value, null, null), value,
+					gridview.getAdapter().getView(value, null, null), 
+					value,
 					gridview.getAdapter().getItemId(value));
-			/*
-			 * try { Thread.sleep(2000); } catch (InterruptedException e) {
-			 * e.printStackTrace(); }
-			 */
+			
+			//LoadTileIcons.mThumbIds[value]=R.drawable.img_start;
+			 
+			/*Handler handler = new Handler(); 
+		    handler.postDelayed(new Runnable() { 
+		         public void run() { 
+		        	 LoadTileIcons.mThumbIds[valuetemp]=R.drawable.img_tile;  
+		         } 
+		    }, 2000); */
+			/*new CountDownTimer(2000, 1000) {
 
+			      public void onFinish() {
+			    	  LoadTileIcons.mThumbIds[valuetemp]=R.drawable.img_tile;  
+			     }
+
+				@Override
+				public void onTick(long arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+			  }.start();*/
 		}
 
 	}
 
-	private void CheckUserInput(int position) {
+	private boolean CheckUserInput(int position) {
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+		
 		if (checkCount < randomNumbers.size()) {
 			if (position != (Integer) randomNumbers.get(checkCount)) {
-				Toast.makeText(MemoryTiles.this, "Sorry, You got it wrong!",
-						Toast.LENGTH_SHORT).show();
-			}
-			if(checkCount == randomNumbers.size()-1){
-				Toast.makeText(MemoryTiles.this, "Congradulations, You got it correct!",
-						Toast.LENGTH_SHORT).show();
-			}
+				alertDialog.setTitle("Game Over");
+				alertDialog.setMessage("Sorry, You got it wrong! Try Agian!");
+				alertDialog.setIcon(R.drawable.logo);
+				alertDialog.setPositiveButton("OK",
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog,
+									int which) {
+								finish();
+							}
+						});
 
+				alertDialog.show();
+
+			} else {
+				if (checkCount == randomNumbers.size() - 1) {
+					Toast.makeText(MemoryTiles.this,
+							"Congradulations! Next Level!!!",
+							Toast.LENGTH_SHORT).show();
+					return true;
+										
+				}
+			}
 		}
-		
 		checkCount++;
+		return false;
 	}
 
 	public void GamePlay() {
+		checkCount=0;
+		test=false;
 		GenerateRandomValues(gameLevel++);
 		TilesColorChange();
 		test = true;
+		
 	}
 
 }

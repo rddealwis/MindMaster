@@ -26,9 +26,9 @@
         android:layout_marginBottom="15dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:columnWidth="40dp"
+        android:columnWidth="60dp"
         android:gravity="center"
-        android:stretchMode="columnWidth"
+        android:stretchMode="none"
         android:horizontalSpacing="0dp"
         android:numColumns="4"
         android:verticalSpacing="0dp" >
