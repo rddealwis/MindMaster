@@ -35,7 +35,8 @@ public class MemoryTiles extends ActionBarActivity {
 	public int score=0;
 	public int level=0;
 	GridView gridview = null;
-
+	Handler handlerClick = new Handler();
+	final ImageView[] testImageViewClick = new ImageView[1];
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
