@@ -8,12 +8,15 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.example.mindmaster.R;
@@ -76,6 +79,16 @@ public class GameSettings extends ActionBarActivity {
 			tglBtn.setTextOff("OFF");
 			tglBtn.setChecked(true);
 			
+			tglBtn.setOnClickListener(new OnClickListener() {
+
+	            @Override
+	            public void onClick(View arg0) {
+	            	Toast.makeText(GameSettings.this,
+							"Congradulations! Next Level!!!",
+							Toast.LENGTH_SHORT).show();
+	            }
+	        });
+			
 			return itemView;			
 		}		
 		
@@ -126,6 +139,24 @@ public class GameSettings extends ActionBarActivity {
             ArrayAdapter<String> adapter1=new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_item,gameLevels);
             adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(adapter1);
+            
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+				@Override
+				public void onItemSelected(AdapterView<?> arg0,
+					View arg1, int position, long arg3) {
+					
+					Toast.makeText(GameSettings.this,
+							"Congradulations! Next Level  "+position+ "!!!",
+							Toast.LENGTH_SHORT).show();
+					}
+
+					 
+					@Override
+					public void onNothingSelected(AdapterView<?> arg0) {
+						// TODO Auto-generated method stub
+
+					}
+				});
 			
 			return itemView;			
 		}		
