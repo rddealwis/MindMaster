@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/imageViewToggle1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/textViewToggle1"
+        android:layout_marginLeft="8dp"
+        android:adjustViewBounds="true"
+        android:maxHeight="45dp"
+        android:maxWidth="45dp"
+        android:paddingBottom="10dip"
+        android:src="@drawable/img_difficulty" />
+
+    <TextView
+        android:id="@+id/textViewToggle1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageViewToggle1"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/imageViewToggle1"
+        android:paddingBottom="10dip"
+        android:text="Difficulty"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFFFFF" />
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textViewToggle1"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/textViewToggle1" />
+
+</RelativeLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <ImageView
+        android:id="@+id/imageViewToggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/textViewToggle"
+        android:layout_marginLeft="8dp"
+        android:adjustViewBounds="true"
+        android:maxHeight="45dp"
+        android:maxWidth="45dp"
+        android:paddingBottom="10dip"
+        android:src="@drawable/img_sounds" />
+
+    <TextView
+        android:id="@+id/textViewToggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/imageViewToggle"
+        android:paddingBottom="10dip"
+        android:text="Sound"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFFFFF" />
+
+    <ToggleButton
+        android:id="@+id/toggleButtonOn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textViewToggle"
+        android:layout_toRightOf="@+id/textViewToggle"
+        android:layout_marginLeft="38dp"
+        android:text="ToggleButton" />
+    
+
+</RelativeLayout>

@@ -1,0 +1,29 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_background"
+    tools:context="com.infinity.mindmaster.HighScores" >
+    
+    <ImageView
+        android:id="@+id/imageViewHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:adjustViewBounds="true"
+        android:maxHeight="100dp"
+        android:maxWidth="100dp"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+        android:src="@drawable/img_header_banner" />
+
+    <ImageView
+        android:id="@+id/imageViewSettings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="62dp"
+        android:src="@drawable/img_highscores_banner" />
+
+</RelativeLayout>

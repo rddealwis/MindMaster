@@ -3,8 +3,6 @@ package com.infinity.mindmaster;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.mindmaster.R;
-
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -14,40 +12,47 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.ToggleButton;
+
+import com.example.mindmaster.R;
 
 public class GameSettings extends ActionBarActivity {
 	
-	private List<SettingsItems> settingsItems = new ArrayList<SettingsItems>();
+	private List<SettingsSoundItems> soundSettingsItems = new ArrayList<SettingsSoundItems>();
+	private List<SettingsDifficultyItems> difficultySettingsItems = new ArrayList<SettingsDifficultyItems>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game_settings);
 		
-		populateMainScrItems();
-		populateListView();
+		populateSoundItems();
+		populateSoundListView();
+		
+		populateDifficultyItems();
+		populateDifficultyListView();
 	}
 	
-	private void populateMainScrItems() {
+	private void populateSoundItems() {
 		
-		settingsItems.add(new SettingsItems("Sound",R.drawable.img_sounds));
-		settingsItems.add(new SettingsItems("Difficulty",R.drawable.img_difficulty));
-		settingsItems.add(new SettingsItems("Speed",R.drawable.img_speed));
+		ToggleButton tglBtn = new ToggleButton(this);		
+		soundSettingsItems.add(new SettingsSoundItems("Sound",R.drawable.img_sounds,tglBtn));
 	}
 	
-	private void populateListView() {
+	private void populateSoundListView() {
 		
-		ArrayAdapter<SettingsItems> adapter = new MyListAdapter();
-		ListView list = (ListView)findViewById(R.id.listViewSettings);
+		ArrayAdapter<SettingsSoundItems> adapter = new SoundListAdapter();
+		ListView list = (ListView)findViewById(R.id.soundSettings_ListView);
 		list.setAdapter(adapter);
 	}
 	
-	private class MyListAdapter extends ArrayAdapter<SettingsItems>{
+	private class SoundListAdapter extends ArrayAdapter<SettingsSoundItems>{
 		
-		public MyListAdapter(){
+		public SoundListAdapter(){
 			
-			super(GameSettings.this, R.layout.settings_item_view,settingsItems);						
+			super(GameSettings.this, R.layout.settings_sound_item_view,soundSettingsItems);						
 		}
 
 		@Override
@@ -55,16 +60,72 @@ public class GameSettings extends ActionBarActivity {
 			
 			View itemView = convertView;
 			if(itemView == null){
-				itemView = getLayoutInflater().inflate(R.layout.settings_item_view,parent, false);				
+				itemView = getLayoutInflater().inflate(R.layout.settings_sound_item_view,parent, false);				
 			}
 			
-			SettingsItems currentItem = settingsItems.get(position);
+			SettingsSoundItems currentItem = soundSettingsItems.get(position);
 			
-			ImageView imageView = (ImageView)itemView.findViewById(R.id.imageViewToggle);
+			ImageView imageView = (ImageView)itemView.findViewById(R.id.sound_ImageView);
 			imageView.setImageResource(currentItem.getIconID());
 			
-			TextView makeText = (TextView)itemView.findViewById(R.id.textViewToggle);
+			TextView makeText = (TextView)itemView.findViewById(R.id.sound_TextView);
 			makeText.setText(currentItem.getDisplayText());
+			
+			ToggleButton tglBtn = (ToggleButton)itemView.findViewById(R.id.sound_ToggleButton);
+			tglBtn.setTextOn("ON");
+			tglBtn.setTextOff("OFF");
+			tglBtn.setChecked(true);
+			
+			return itemView;			
+		}		
+		
+	}
+	
+	private void populateDifficultyItems() {
+		
+		Spinner spinner = new Spinner(this);		
+		difficultySettingsItems.add(new SettingsDifficultyItems("Difficulty",R.drawable.img_difficulty,spinner));
+		
+	}
+
+	private void populateDifficultyListView() {
+		
+		ArrayAdapter<SettingsDifficultyItems> adapterOne = new DifficultyListAdapter();
+		ListView list = (ListView)findViewById(R.id.difficultySettings_ListView);
+		list.setAdapter(adapterOne);
+		
+	}
+	
+	private class DifficultyListAdapter extends ArrayAdapter<SettingsDifficultyItems>{
+		
+		public DifficultyListAdapter(){
+			
+			super(GameSettings.this, R.layout.settings_difficulty_item_view,difficultySettingsItems);						
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			
+			View itemView = convertView;
+			if(itemView == null){
+				itemView = getLayoutInflater().inflate(R.layout.settings_difficulty_item_view,parent, false);				
+			}
+			
+			SettingsDifficultyItems currentItem = difficultySettingsItems.get(position);
+			
+			ImageView imageView = (ImageView)itemView.findViewById(R.id.difficulty_ImageView);
+			imageView.setImageResource(currentItem.getIconID());
+			
+			TextView makeText = (TextView)itemView.findViewById(R.id.difficulty_TextView);
+			makeText.setText(currentItem.getDisplayText());
+			
+			Spinner spinner=(Spinner) itemView.findViewById(R.id.difficulty_Spinner);
+
+            String[] gameLevels={"Easy","Medium","Hard"};
+
+            ArrayAdapter<String> adapter1=new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_item,gameLevels);
+            adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner.setAdapter(adapter1);
 			
 			return itemView;			
 		}		

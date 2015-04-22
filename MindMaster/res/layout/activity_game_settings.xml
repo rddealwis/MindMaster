@@ -18,7 +18,7 @@
         android:src="@drawable/img_header_banner" />
 
     <ImageView
-        android:id="@+id/imageViewHelp"
+        android:id="@+id/imageViewSettings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -28,17 +28,34 @@
         android:src="@drawable/img_settings_banner" />
     
     <ListView
-        android:id="@+id/listViewSettings"
+        android:id="@+id/soundSettings_ListView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageViewHelp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"
+        android:layout_below="@+id/imageViewSettings"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/img_background"
-        android:maxHeight="50dp"
-        android:maxWidth="50dp"
         android:divider="#FFFFFF"
-        android:dividerHeight="5dip" >
+        android:dividerHeight="5dip"
+        android:maxHeight="50dp"
+        android:maxWidth="50dp" >
+        
+     </ListView>
+     
+    <ListView
+        android:id="@+id/difficultySettings_ListView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/soundSettings_ListView"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/img_background"
+        android:divider="#FFFFFF"
+        android:dividerHeight="5dip"
+        android:maxHeight="50dp"
+        android:maxWidth="50dp" >
         
      </ListView>
 
