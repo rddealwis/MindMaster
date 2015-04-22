@@ -42,7 +42,7 @@
          android:scrollbars="vertical"
          android:gravity="center_horizontal"
          android:scrollbarStyle="outsideOverlay"
-         android:textColor="#FFFFFF"
+         android:textColor="@color/color_white"
          android:fadingEdge="vertical"
          android:background="@drawable/img_background"
          android:bufferType="spannable" />

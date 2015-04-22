@@ -27,7 +27,7 @@
         android:paddingBottom="10dip"
         android:text="Sound"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#FFFFFF" />
+        android:textColor="@color/color_white" />
 
     <ToggleButton
         android:id="@+id/sound_ToggleButton"

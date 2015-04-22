@@ -36,7 +36,7 @@
         android:layout_marginRight="15dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/img_background"
-        android:divider="#FFFFFF"
+        android:divider="@color/color_white"
         android:dividerHeight="5dip"
         android:maxHeight="50dp"
         android:maxWidth="50dp" >
@@ -52,7 +52,7 @@
         android:layout_marginRight="15dp"
         android:layout_marginTop="25dp"
         android:background="@drawable/img_background"
-        android:divider="#FFFFFF"
+        android:divider="@color/color_white"
         android:dividerHeight="5dip"
         android:maxHeight="50dp"
         android:maxWidth="50dp" >

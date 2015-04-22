@@ -27,7 +27,7 @@
         android:paddingBottom="10dip"
         android:text="Difficulty"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#FFFFFF" />
+        android:textColor="@color/color_white" />
 
     <Spinner
         android:id="@+id/difficulty_Spinner"

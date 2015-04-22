@@ -12,7 +12,7 @@
         android:paddingBottom ="10dip"
         android:layout_toRightOf="@+id/imageViewStart"
         android:text="Start"        
-        android:textColor="#FFFFFF"
+        android:textColor="@color/color_white"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <ImageView

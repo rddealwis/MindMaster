@@ -24,14 +24,14 @@
         android:layout_below="@+id/imageViewHeader"
         android:layout_centerHorizontal="true"
         android:adjustViewBounds="true"
-        android:paddingTop="15dp"
+        android:paddingTop="20dp"
         android:paddingLeft="75dp"
         android:paddingRight="75dp"
         android:paddingBottom="15dp"
         android:src="@drawable/img_splash_logo" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/splashScreenText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageViewIcon"
@@ -40,8 +40,8 @@
         android:paddingRight="10dp"
         android:paddingTop="10dp"
         android:gravity="center"
-        android:text="Be the best on each mode and test how good your short term memory is."
+        android:text="@string/splash_screen_text"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#FFFFFF" />
+        android:textColor="@color/color_white" />
 
 </RelativeLayout>

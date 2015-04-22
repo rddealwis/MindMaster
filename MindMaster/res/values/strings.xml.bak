@@ -10,7 +10,5 @@
     <string name="title_activity_high_scores">HighScores</string>
     <string name="title_activity_memory_tiles">MemoryTiles</string>
     <string name="title_activity_main_screen">MainScreen</string>
-    <string name="splash_screen_text">Be the best on each mode and test how good your short term memory is.</string>
-    <string name="game_start_button_text">  Start  </string>
 
 </resources>

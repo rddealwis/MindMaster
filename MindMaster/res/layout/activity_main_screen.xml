@@ -27,7 +27,7 @@
         android:background="@drawable/img_background"
         android:maxHeight="50dp"
         android:maxWidth="50dp"
-        android:divider="#FFFFFF"
+        android:divider="@color/color_white"
         android:dividerHeight="5dip" >
 
     </ListView>
