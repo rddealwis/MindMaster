@@ -4,11 +4,11 @@ import android.widget.ToggleButton;
 
 public class SettingsSoundItems {
 	
-	private String displayText;
+	private int displayText;
 	private int iconID;
 	private ToggleButton tglBtn;
 	
-	public SettingsSoundItems(String displayText,int iconID, ToggleButton tglBtn){
+	public SettingsSoundItems(int displayText,int iconID, ToggleButton tglBtn){
 		
 		super();
 		this.displayText = displayText;
@@ -16,7 +16,7 @@ public class SettingsSoundItems {
 		this.tglBtn = tglBtn;
 	}
 	
-	public String getDisplayText(){
+	public int getDisplayText(){
 		return displayText;
 	}
 	

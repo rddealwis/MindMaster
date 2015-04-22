@@ -90,10 +90,10 @@ public class MainScreen extends Activity {
 		
 	private void populateMainScrItems() {
 		
-		mainScreenItems.add(new MainScreenItems("Play",R.drawable.img_start));
-		mainScreenItems.add(new MainScreenItems("High Score",R.drawable.img_highscore));
-		mainScreenItems.add(new MainScreenItems("Settings",R.drawable.img_settings));
-		mainScreenItems.add(new MainScreenItems("Help",R.drawable.img_help));		
+		mainScreenItems.add(new MainScreenItems(R.string.main_list_item_one,R.drawable.img_start));
+		mainScreenItems.add(new MainScreenItems(R.string.main_list_item_two,R.drawable.img_highscore));
+		mainScreenItems.add(new MainScreenItems(R.string.main_list_item_three,R.drawable.img_settings));
+		mainScreenItems.add(new MainScreenItems(R.string.main_list_item_four,R.drawable.img_help));		
 	}
 	
 	private void populateListView() {

@@ -2,17 +2,17 @@ package com.infinity.mindmaster;
 
 public class MainScreenItems {
 	
-	private String displayText;
+	private int displayText;
 	private int iconID;
 	
-	public MainScreenItems(String displayText,int iconID){
+	public MainScreenItems(int displayText,int iconID){
 		
 		super();
 		this.displayText = displayText;
 		this.iconID = iconID;	
 	}
 	
-	public String getDisplayText(){
+	public int getDisplayText(){
 		return displayText;
 	}
 	

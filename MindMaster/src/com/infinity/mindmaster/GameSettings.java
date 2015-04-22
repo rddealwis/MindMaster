@@ -55,7 +55,7 @@ public class GameSettings extends ActionBarActivity {
 	private void populateSoundItems() {
 		
 		ToggleButton tglBtn = new ToggleButton(this);		
-		soundSettingsItems.add(new SettingsSoundItems("Sound",R.drawable.img_sounds,tglBtn));
+		soundSettingsItems.add(new SettingsSoundItems(R.string.settings_list_item_one,R.drawable.img_sounds,tglBtn));
 	}
 	
 	private void populateSoundListView() {
@@ -124,7 +124,7 @@ public class GameSettings extends ActionBarActivity {
 	private void populateDifficultyItems() {
 		
 		Spinner spinner = new Spinner(this);		
-		difficultySettingsItems.add(new SettingsDifficultyItems("Difficulty",R.drawable.img_difficulty,spinner));
+		difficultySettingsItems.add(new SettingsDifficultyItems(R.string.settings_list_item_two,R.drawable.img_difficulty,spinner));
 		
 	}
 

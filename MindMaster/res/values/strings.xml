@@ -12,5 +12,11 @@
     <string name="title_activity_main_screen">MainScreen</string>
     <string name="splash_screen_text">Be the best on each mode and test how good your short term memory is.</string>
     <string name="game_start_button_text">  Start  </string>
+    <string name="main_list_item_one">Play</string>
+    <string name="main_list_item_two">High Score</string>
+    <string name="main_list_item_three">Settings</string>
+    <string name="main_list_item_four">Help</string>
+    <string name="settings_list_item_one">Sound</string>
+    <string name="settings_list_item_two">Difficulty</string>
 
 </resources>

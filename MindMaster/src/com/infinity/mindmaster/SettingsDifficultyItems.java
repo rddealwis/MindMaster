@@ -4,11 +4,11 @@ import android.widget.Spinner;
 
 public class SettingsDifficultyItems {
 	
-	private String displayText;
+	private int displayText;
 	private int iconID;
 	private Spinner spinner;
 	
-	public SettingsDifficultyItems(String displayText,int iconID, Spinner spinner){
+	public SettingsDifficultyItems(int displayText,int iconID, Spinner spinner){
 		
 		super();
 		this.displayText = displayText;
@@ -16,7 +16,7 @@ public class SettingsDifficultyItems {
 		this.spinner = spinner;
 	}
 	
-	public String getDisplayText(){
+	public int getDisplayText(){
 		return displayText;
 	}
 	
