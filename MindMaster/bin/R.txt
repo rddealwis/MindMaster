@@ -265,7 +265,7 @@ int id action_context_bar 0x7f06001d
 int id action_menu_divider 0x7f060016
 int id action_menu_presenter 0x7f060017
 int id action_mode_close_button 0x7f060024
-int id action_settings 0x7f060063
+int id action_settings 0x7f060065
 int id activity_chooser_view_content 0x7f060025
 int id always 0x7f06000b
 int id beginning 0x7f060011
@@ -312,6 +312,7 @@ int id imageViewHighScores 0x7f060042
 int id imageViewIcon 0x7f060059
 int id imageViewSettings 0x7f06003d
 int id imageViewStart 0x7f06005c
+int id imageViewToggle 0x7f060060
 int id listMode 0x7f060001
 int id listViewMain 0x7f060043
 int id list_item 0x7f060029
@@ -338,9 +339,9 @@ int id showCustom 0x7f060007
 int id showHome 0x7f060004
 int id showTitle 0x7f060006
 int id soundSettings_ListView 0x7f06003e
-int id sound_ImageView 0x7f060060
-int id sound_TextView 0x7f060061
-int id sound_ToggleButton 0x7f060062
+int id sound_ImageView 0x7f060062
+int id sound_TextView 0x7f060063
+int id sound_ToggleButton 0x7f060064
 int id split_action_bar 0x7f06001e
 int id submit_area 0x7f060039
 int id tabMode 0x7f060002
@@ -348,6 +349,7 @@ int id textView1 0x7f06005a
 int id textViewDescription 0x7f060041
 int id textViewScore 0x7f060046
 int id textViewStart 0x7f06005b
+int id textViewToggle 0x7f060061
 int id title 0x7f06002b
 int id top_action_bar 0x7f060020
 int id up 0x7f060021
@@ -386,8 +388,9 @@ int layout activity_memory_tiles 0x7f03001c
 int layout activity_splash_screen 0x7f03001d
 int layout main_screen_item_view 0x7f03001e
 int layout settings_difficulty_item_view 0x7f03001f
-int layout settings_sound_item_view 0x7f030020
-int layout support_simple_spinner_dropdown_item 0x7f030021
+int layout settings_item_view 0x7f030020
+int layout settings_sound_item_view 0x7f030021
+int layout support_simple_spinner_dropdown_item 0x7f030022
 int menu game_settings 0x7f0d0000
 int menu help 0x7f0d0001
 int menu high_scores 0x7f0d0002
@@ -395,6 +398,8 @@ int menu memory_tiles 0x7f0d0003
 int menu settings 0x7f0d0004
 int menu splash_screen 0x7f0d0005
 int raw helpdoc 0x7f050000
+int raw highscore 0x7f050001
+int raw settings 0x7f050002
 int string abc_action_bar_home_description 0x7f0b0001
 int string abc_action_bar_up_description 0x7f0b0002
 int string abc_action_menu_overflow_description 0x7f0b0003

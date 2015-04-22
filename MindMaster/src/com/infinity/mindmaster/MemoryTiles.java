@@ -1,5 +1,6 @@
 package com.infinity.mindmaster;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputBinding;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
@@ -41,9 +43,8 @@ public class MemoryTiles extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_memory_tiles);
-
 		gridview = (GridView) findViewById(R.id.gridView_Tile);
-		
+			
 	}
 
 	
