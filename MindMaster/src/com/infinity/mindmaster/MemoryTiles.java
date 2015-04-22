@@ -1,5 +1,6 @@
 package com.infinity.mindmaster;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -7,12 +8,16 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputBinding;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -32,6 +37,7 @@ public class MemoryTiles extends ActionBarActivity {
 	public boolean correct = true;
 	public int score=0;
 	public int level=0;
+	public int timeGap=0;
 	GridView gridview = null;
 	Handler handlerClick = new Handler();
 	final ImageView[] testImageViewClick = new ImageView[1];
@@ -44,11 +50,26 @@ public class MemoryTiles extends ActionBarActivity {
 		setContentView(R.layout.activity_memory_tiles);
 		gridview = (GridView) findViewById(R.id.gridView_Tile);
 		buttonSound = MediaPlayer.create(MemoryTiles.this, R.raw.button_click);
-			
+		SetTimeGapValue();	
 	}
 
 	
 	
+	private void SetTimeGapValue() {
+		switch(Integer.valueOf(MainScreen.settingsArray[1])){
+		case 1: timeGap=1500;
+			break;
+		case 2:timeGap=1000;
+			break;
+		case 3:timeGap=500;
+		break;
+		
+		}
+		
+	}
+
+
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -152,14 +173,14 @@ public class MemoryTiles extends ActionBarActivity {
 	             public void run() { 
 	            	   testImageView[0].setImageResource(R.drawable.img_clicked_tile);
 	             } 
-	        }, 1000*(time)); 
+	        }, timeGap*(time)); 
 	       
 	       
 	        handler.postDelayed(new Runnable() { 
 	             public void run() { 
 	               testImageView[0].setImageResource(R.drawable.img_tile);
 	             } 
-	        }, 1000*(time+1)); }
+	        }, timeGap*(time+1)); }
 	catch(Exception e){
 		Log.d("Error: ", e.toString());
 	}

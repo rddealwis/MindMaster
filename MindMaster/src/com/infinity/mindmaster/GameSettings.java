@@ -1,10 +1,12 @@
 package com.infinity.mindmaster;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,7 +27,7 @@ public class GameSettings extends ActionBarActivity {
 	
 	private List<SettingsSoundItems> soundSettingsItems = new ArrayList<SettingsSoundItems>();
 	private List<SettingsDifficultyItems> difficultySettingsItems = new ArrayList<SettingsDifficultyItems>();
-
+	FileAccess fileAccess=new FileAccess();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -37,7 +39,19 @@ public class GameSettings extends ActionBarActivity {
 		populateDifficultyItems();
 		populateDifficultyListView();
 	}
-	
+	@Override
+	public void onBackPressed() {
+	    String value="";
+	    value=MainScreen.settingsArray[0]+";"+MainScreen.settingsArray[1]+";";
+	    try {
+			fileAccess.FileWrite("settings", value);
+			Log.d("chwtlk valeu: ", value);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    super.onBackPressed();
+	}
 	private void populateSoundItems() {
 		
 		ToggleButton tglBtn = new ToggleButton(this);		
@@ -74,18 +88,31 @@ public class GameSettings extends ActionBarActivity {
 			TextView makeText = (TextView)itemView.findViewById(R.id.sound_TextView);
 			makeText.setText(currentItem.getDisplayText());
 			
-			ToggleButton tglBtn = (ToggleButton)itemView.findViewById(R.id.sound_ToggleButton);
+			final ToggleButton tglBtn = (ToggleButton)itemView.findViewById(R.id.sound_ToggleButton);
 			tglBtn.setTextOn("ON");
 			tglBtn.setTextOff("OFF");
-			tglBtn.setChecked(true);
+			//tglBtn.setChecked(true);
+			Log.d("chwtlk valeu11112: ", MainScreen.settingsArray[0]);
+			tglBtn.setChecked(MainScreen.settingsArray[0].equals("1"));
+			
+			
+			if(tglBtn.isChecked()){	            		
+        		MainScreen.settingsArray[0]="1";
+        	}
+        	else{
+        		MainScreen.settingsArray[0]="0";
+        	}
 			
 			tglBtn.setOnClickListener(new OnClickListener() {
 
 	            @Override
 	            public void onClick(View arg0) {
-	            	Toast.makeText(GameSettings.this,
-							"Congradulations! Next Level!!!",
-							Toast.LENGTH_SHORT).show();
+	            	if(tglBtn.isChecked()){	            		
+	            		MainScreen.settingsArray[0]="1";
+	            	}
+	            	else{
+	            		MainScreen.settingsArray[0]="0";
+	            	}
 	            }
 	        });
 			
@@ -139,15 +166,12 @@ public class GameSettings extends ActionBarActivity {
             ArrayAdapter<String> adapter1=new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_item,gameLevels);
             adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(adapter1);
-            
+            spinner.setSelection(Integer.valueOf(MainScreen.settingsArray[1])-1);
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 				@Override
 				public void onItemSelected(AdapterView<?> arg0,
 					View arg1, int position, long arg3) {
-					
-					Toast.makeText(GameSettings.this,
-							"Congradulations! Next Level  "+position+ "!!!",
-							Toast.LENGTH_SHORT).show();
+					MainScreen.settingsArray[1]=String.valueOf(position+1);
 					}
 
 					 

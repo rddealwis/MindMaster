@@ -858,10 +858,12 @@ containing a value of this type.
         public static final int abc_split_action_bar_is_narrow=0x7f070002;
     }
     public static final class color {
-        public static final int abc_search_url_text_holo=0x7f080003;
+        public static final int abc_search_url_text_holo=0x7f080005;
         public static final int abc_search_url_text_normal=0x7f080000;
         public static final int abc_search_url_text_pressed=0x7f080002;
         public static final int abc_search_url_text_selected=0x7f080001;
+        public static final int color_black=0x7f080004;
+        public static final int color_white=0x7f080003;
     }
     public static final class dimen {
         /**  Default height of an action bar. 
@@ -1094,8 +1096,9 @@ containing a value of this type.
         public static final int img_splash_logo=0x7f020063;
         public static final int img_start=0x7f020064;
         public static final int img_tile=0x7f020065;
-        public static final int logo=0x7f020066;
-        public static final int logo_mind_master=0x7f020067;
+        public static final int img_user_click=0x7f020066;
+        public static final int logo=0x7f020067;
+        public static final int logo_mind_master=0x7f020068;
     }
     public static final class id {
         public static final int TextViewLevelNo=0x7f060045;
@@ -1110,7 +1113,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f060016;
         public static final int action_menu_presenter=0x7f060017;
         public static final int action_mode_close_button=0x7f060024;
-        public static final int action_settings=0x7f060065;
+        public static final int action_settings=0x7f060063;
         public static final int activity_chooser_view_content=0x7f060025;
         public static final int always=0x7f06000b;
         public static final int beginning=0x7f060011;
@@ -1157,7 +1160,6 @@ containing a value of this type.
         public static final int imageViewIcon=0x7f060059;
         public static final int imageViewSettings=0x7f06003d;
         public static final int imageViewStart=0x7f06005c;
-        public static final int imageViewToggle=0x7f060060;
         public static final int listMode=0x7f060001;
         public static final int listViewMain=0x7f060043;
         public static final int list_item=0x7f060029;
@@ -1184,17 +1186,16 @@ containing a value of this type.
         public static final int showHome=0x7f060004;
         public static final int showTitle=0x7f060006;
         public static final int soundSettings_ListView=0x7f06003e;
-        public static final int sound_ImageView=0x7f060062;
-        public static final int sound_TextView=0x7f060063;
-        public static final int sound_ToggleButton=0x7f060064;
+        public static final int sound_ImageView=0x7f060060;
+        public static final int sound_TextView=0x7f060061;
+        public static final int sound_ToggleButton=0x7f060062;
+        public static final int splashScreenText=0x7f06005a;
         public static final int split_action_bar=0x7f06001e;
         public static final int submit_area=0x7f060039;
         public static final int tabMode=0x7f060002;
-        public static final int textView1=0x7f06005a;
         public static final int textViewDescription=0x7f060041;
         public static final int textViewScore=0x7f060046;
         public static final int textViewStart=0x7f06005b;
-        public static final int textViewToggle=0x7f060061;
         public static final int title=0x7f06002b;
         public static final int top_action_bar=0x7f060020;
         public static final int up=0x7f060021;
@@ -1259,9 +1260,8 @@ containing a value of this type.
         public static final int activity_splash_screen=0x7f03001d;
         public static final int main_screen_item_view=0x7f03001e;
         public static final int settings_difficulty_item_view=0x7f03001f;
-        public static final int settings_item_view=0x7f030020;
-        public static final int settings_sound_item_view=0x7f030021;
-        public static final int support_simple_spinner_dropdown_item=0x7f030022;
+        public static final int settings_sound_item_view=0x7f030020;
+        public static final int support_simple_spinner_dropdown_item=0x7f030021;
     }
     public static final class menu {
         public static final int game_settings=0x7f0d0000;
@@ -1272,9 +1272,10 @@ containing a value of this type.
         public static final int splash_screen=0x7f0d0005;
     }
     public static final class raw {
-        public static final int helpdoc=0x7f050000;
-        public static final int highscore=0x7f050001;
-        public static final int settings=0x7f050002;
+        public static final int button_click=0x7f050000;
+        public static final int helpdoc=0x7f050001;
+        public static final int highscore=0x7f050002;
+        public static final int settings=0x7f050003;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1319,7 +1320,9 @@ containing a value of this type.
         public static final int abc_shareactionprovider_share_with_application=0x7f0b000b;
         public static final int action_settings=0x7f0b0010;
         public static final int app_name=0x7f0b000d;
+        public static final int game_start_button_text=0x7f0b0017;
         public static final int hello_world=0x7f0b000e;
+        public static final int splash_screen_text=0x7f0b0016;
         public static final int title_activity_game_settings=0x7f0b0012;
         public static final int title_activity_help=0x7f0b000f;
         public static final int title_activity_high_scores=0x7f0b0013;

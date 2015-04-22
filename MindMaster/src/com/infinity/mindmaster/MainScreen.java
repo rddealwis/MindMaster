@@ -40,6 +40,7 @@ public class MainScreen extends Activity {
 	public static String[] highScoreArray=new String[10];
 	String settingsString="";
 	String highScoreString="";
+	public static FileAccess fileAccess=new FileAccess();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -50,8 +51,29 @@ public class MainScreen extends Activity {
 		registerClickCallBack();
 		
 		try {			
-			settingsArray=FileRead("settings");
-			highScoreArray=FileRead("highscore");
+			//lack of performance. should be changed.
+			if(fileAccess.FileRead("settings")==null){
+				for(int i=0;i<2;i++)
+				{
+					settingsArray[i]="2";
+				}
+			}
+			else
+			{
+				settingsArray=fileAccess.FileRead("settings");
+				Log.d("chwtlkme ", settingsArray[0]+settingsArray[1]);
+			}
+			if(fileAccess.FileRead("highscore")==null){
+				for(int i=0;i<10;i++)
+				{
+					highScoreArray[i]="";
+				}
+			}
+			else
+			{
+				highScoreArray=fileAccess.FileRead("highscore");
+			}
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			Log.d("Error error error: ", e.toString());
@@ -65,25 +87,7 @@ public class MainScreen extends Activity {
 		super.onDestroy();
 	}
 	
-	private void FileWrite(String fileName, String value) throws IOException{
 		
-		FileOutputStream fos = openFileOutput(fileName, Context.MODE_PRIVATE);
-		fos.write(value.getBytes());
-		fos.close();
-	}
-	private String[] FileRead(String fileName) throws IOException{
-		
-		File file=new File(fileName);
-		if(file.exists()){
-		FileInputStream in = openFileInput(fileName);
-	    InputStreamReader inputStreamReader = new InputStreamReader(in);
-	    BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-	    return bufferedReader.readLine().split(";");	  
-		}
-		return null;
-	    
-	}
-	
 	private void populateMainScrItems() {
 		
 		mainScreenItems.add(new MainScreenItems("Play",R.drawable.img_start));
