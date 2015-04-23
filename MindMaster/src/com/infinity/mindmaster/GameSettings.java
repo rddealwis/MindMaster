@@ -96,7 +96,7 @@ public class GameSettings extends ActionBarActivity {
 			tglBtn.setTextOn("ON");
 			tglBtn.setTextOff("OFF");
 			//tglBtn.setChecked(true);
-			Log.d("chwtlk valeu11112: ", MainScreen.settingsArray[0]);
+			Log.d("chwtlk valeu11112: ", MainScreen.highScoreArray[0]+MainScreen.highScoreArray[1]);
 			tglBtn.setChecked(MainScreen.settingsArray[0].equals("1"));			
 			
 			if(tglBtn.isChecked()){	            		

@@ -31,12 +31,11 @@ public class HighScores extends ActionBarActivity {
 	}
 	
 	private void populateHighScoreItems() {
-		
+		MemoryTiles.SortArray();
 		for(int i=0; i<MainScreen.highScoreArray.length; i++){
 			
-			//mainScreenItems.add(new Highscoresview(MainScreen.highScoreArray[i], MainScreen.highScoreArray[i+1]));
-			//Log.d("Value 1:"+MainScreen.highScoreArray[i],"Value 2:"+MainScreen.highScoreArray[i+1]);
-			highScoreItems.add(new HighScoreItems("hi","hi"));
+			highScoreItems.add(new HighScoreItems(MainScreen.highScoreArray[i], MainScreen.highScoreArray[i+1]));
+			i++;
 			
 		}	
 	}
@@ -69,7 +68,7 @@ public class HighScores extends ActionBarActivity {
 			makeText.setText(currentItem.getDisplayText());
 			
 			TextView makeText1 = (TextView)itemView.findViewById(R.id.textViewPlayerScore);
-			makeText1.setText(currentItem.getDisplayText());
+			makeText1.setText(currentItem.getIconID());
 			
 			return itemView;			
 		}		

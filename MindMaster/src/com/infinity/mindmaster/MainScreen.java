@@ -18,16 +18,20 @@ import java.util.List;
 import com.example.mindmaster.R;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.PendingIntent.OnFinished;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.SyncStateContract.Helpers;
+import android.text.Editable;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -50,7 +54,6 @@ public class MainScreen extends Activity {
 		populateMainScrItems();
 		populateListView();
 		registerClickCallBack();
-		highScoreArray =("Chintaka;100;Disni;200;Anuja;300;Rasanjana;400;Piyumi;500;").split(";");
 		
 		try {			
 			//lack of performance. should be changed.
@@ -63,17 +66,18 @@ public class MainScreen extends Activity {
 			else
 			{
 				settingsArray=fileAccess.FileRead("settings");
+				
 				Log.d("chwtlkme ", settingsArray[0]+settingsArray[1]);
 			}
 			if(fileAccess.FileRead("highscore")==null){
-				for(int i=0;i<10;i++)
-				{
-					highScoreArray[i]="";
-				}
+				highScoreArray =("Chintaka;10;Disni;20;Anuja;30;Rasanjana;40;").split(";");
+				MemoryTiles.SortArray();
+								
 			}
 			else
 			{
 				highScoreArray=fileAccess.FileRead("highscore");
+				MemoryTiles.SortArray();
 			}
 			
 		} catch (IOException e) {
@@ -81,6 +85,8 @@ public class MainScreen extends Activity {
 		}		
 	}	
 	
+	
+
 	@Override
 	protected void onDestroy() {
 		

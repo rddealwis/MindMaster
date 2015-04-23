@@ -1,5 +1,6 @@
 package com.infinity.mindmaster;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Random;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
+import android.text.Editable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +20,8 @@ import android.view.View;
 import android.view.inputmethod.InputBinding;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -42,14 +46,14 @@ public class MemoryTiles extends ActionBarActivity {
 	Handler handlerClick = new Handler();
 	final ImageView[] testImageViewClick = new ImageView[1];
 	MediaPlayer buttonSound = null;	
-	
+	FileAccess fileAccess=new FileAccess();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_memory_tiles);
 		gridview = (GridView) findViewById(R.id.gridView_Tile);
 		buttonSound = MediaPlayer.create(MemoryTiles.this, R.raw.button_click);
-		SetTimeGapValue();	
+		SetTimeGapValue();
 	}
 	
 	private void SetTimeGapValue() {
@@ -81,14 +85,6 @@ public class MemoryTiles extends ActionBarActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
-	}
-
-	@Override
-	protected void onResume() {
-		
-		super.onResume();
-		//this.GamePlay();
-		//color();
 	}
 
 	public void startPlay(View v)
@@ -187,6 +183,7 @@ public class MemoryTiles extends ActionBarActivity {
 		
 		if (checkCount < randomNumbers.size()) {
 			if (position != (Integer) randomNumbers.get(checkCount)) {
+				if(!(score>Integer.valueOf(MainScreen.highScoreArray[7]))){
 				alertDialog.setTitle("Game Over");
 				alertDialog.setMessage("Sorry, You got it wrong! Try Agian! Your score is "+score+"!!!");
 				alertDialog.setIcon(R.drawable.logo);
@@ -200,6 +197,15 @@ public class MemoryTiles extends ActionBarActivity {
 						});
 
 				alertDialog.show();
+				}
+				else
+				{
+				Log.d("Line: ", "202");
+				GetUserName();
+				Log.d("Line: ", "204");
+				SaveToFile();
+				Log.d("Line: ", "206");
+				}
 
 			} else {
 				final TextView changeScore = (TextView) findViewById(R.id.textViewScore);
@@ -217,6 +223,24 @@ public class MemoryTiles extends ActionBarActivity {
 		checkCount++;
 		return false;
 	}	
+
+	private void SaveToFile() {
+		String value="";
+		for(int i=0; i<MainScreen.highScoreArray.length;i++){
+		    value+=MainScreen.highScoreArray[i]+";"+MainScreen.highScoreArray[i+1]+";";
+		    i++;
+		}
+		    try {
+				fileAccess.FileWrite("highscore", value);
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		    super.onBackPressed();
+		
+	
+	}
 
 	public void imageViewCol1Clicked(View v)
 	{
@@ -315,4 +339,67 @@ public class MemoryTiles extends ActionBarActivity {
 		CheckUserInput(15);
 		buttonSound.start();
 	}	
+	
+	private void GetUserName() {
+		AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+		alert.setTitle("High Score");
+		alert.setMessage("Please give your Name:");
+
+		
+		final EditText input = new EditText(this);
+		alert.setView(input);
+
+		alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+		public void onClick(DialogInterface dialog, int whichButton) {
+		  Editable name = input.getText();
+		  MainScreen.highScoreArray[MainScreen.highScoreArray.length]=String.valueOf(name);
+		  MainScreen.highScoreArray[MainScreen.highScoreArray.length+1]=String.valueOf(score);
+		 
+		  }
+		});
+		alert.show();
+		
+	}
+	
+	public static void SortArray(){
+		
+		 int j;
+	     boolean flag = true;   // set flag to true to begin first pass
+	     int temp;   //holding variable
+	     String temp2;
+	     int[] arrayTempInteger=new int[MainScreen.highScoreArray.length/2];
+	     String[] arrayTempString=new String[MainScreen.highScoreArray.length/2];
+	     int k=0;
+	     for(int i=0; i<MainScreen.highScoreArray.length; i++){
+	    	 arrayTempString[k]=MainScreen.highScoreArray[i];
+	    	 arrayTempInteger[k]=Integer.valueOf(MainScreen.highScoreArray[i+1]);
+	    	 i++;	    
+	    	 k++;
+	     }
+	     
+	     
+	     for(int i=0; i < arrayTempInteger.length-1; i++){
+	    	 
+	            for(int j1=1; j1 < arrayTempInteger.length-i; j1++){
+	                if(arrayTempInteger[j1-1] < arrayTempInteger[j1]){
+	                    temp=arrayTempInteger[j1-1];
+	                    temp2=arrayTempString[j1-1];
+	                    
+	                    arrayTempInteger[j1-1] = arrayTempInteger[j1];
+	                    arrayTempString[j1-1]=arrayTempString[j1];
+	                    
+	                    arrayTempInteger[j1] = temp;
+	                    arrayTempString[j1]=temp2;
+	                }
+	            }
+	        }
+	     k=0;
+	     for(int i=0; i<MainScreen.highScoreArray.length; i++){
+	    	 MainScreen.highScoreArray[i]=arrayTempString[k];
+	    	 MainScreen.highScoreArray[i+1]=String.valueOf(arrayTempInteger[k]);
+	    	 i++;	    
+	    	 k++;
+	     }
+	}
 }
