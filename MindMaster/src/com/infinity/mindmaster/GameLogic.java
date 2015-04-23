@@ -20,10 +20,8 @@ public class GameLogic {
 		Random rand = new Random();
 		for (int generateCount = 0; generateCount < amount; generateCount++) {
 			
-			randomNumbers.add(rand.nextInt((amount - 1) + 1) + 1);
-			
-		}
-	    
+			randomNumbers.add(rand.nextInt((amount - 1) + 1) + 1);			
+		}	    
 	}
 	
 	public void GetNextRandomValue(){
@@ -31,8 +29,7 @@ public class GameLogic {
 		
 	}
 	
-	public boolean CheckRandomValue() {		
-		
+	public boolean CheckRandomValue() {				
 		
 		return false;		
 	}
@@ -44,16 +41,15 @@ public class GameLogic {
 	}
 	
 	public void GetUserInput(){
+		
 		Scanner reader = new Scanner(System.in);
 		userInput.removeAll(userInput);
 		for (int index = 0; index < randomNumbers.size(); index++)
 		{
-		System.out.println("Enter the number " +(index+1)+": ");
-		userInput.add(reader.nextInt());
+			System.out.println("Enter the number " +(index+1)+": ");
+			userInput.add(reader.nextInt());
 		}
 	}
-	
-	
 	
 	public boolean CheckUserInput(){		
 		for (int index = 0; index < randomNumbers.size(); index++) {
@@ -76,8 +72,7 @@ public class GameLogic {
 			if (!CheckUserInput()) {
 				return false;
 			}
-		}
-		
+		}		
 	}
 	
 	public static void main(String[] args){
@@ -85,9 +80,6 @@ public class GameLogic {
 		GameLogic gl=new GameLogic();
 		if(!gl.GamePlay()){
 			System.out.println("Game over");
-		}
-		
+		}		
 	}
-	
-
 }

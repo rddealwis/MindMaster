@@ -41,6 +41,7 @@ public class MainScreen extends Activity {
 	String settingsString="";
 	String highScoreString="";
 	public static FileAccess fileAccess=new FileAccess();
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -49,6 +50,7 @@ public class MainScreen extends Activity {
 		populateMainScrItems();
 		populateListView();
 		registerClickCallBack();
+		highScoreArray =("Chintaka;100;Disni;200;Anuja;300;Rasanjana;400;Piyumi;500;").split(";");
 		
 		try {			
 			//lack of performance. should be changed.
@@ -75,10 +77,8 @@ public class MainScreen extends Activity {
 			}
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			Log.d("Error error error: ", e.toString());
-		}
-		
+		}		
 	}	
 	
 	@Override
@@ -127,8 +127,7 @@ public class MainScreen extends Activity {
 			makeText.setText(currentItem.getDisplayText());
 			
 			return itemView;			
-		}		
-		
+		}				
 	}
 	
 	private void registerClickCallBack() {
@@ -170,14 +169,8 @@ public class MainScreen extends Activity {
 								startActivity(intent);
 								break;
 							}
-				}			
-				
-				
-				/*String message = "You clicked position " + position + " which is " + clickedItem.getDisplayText();
-				
-				Toast.makeText(MainScreen.this, message, Toast.LENGTH_LONG).show();*/
+				}							
 			}
-		});
-		
+		});		
 	}
 }

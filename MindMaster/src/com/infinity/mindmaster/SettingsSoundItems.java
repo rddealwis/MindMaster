@@ -27,5 +27,4 @@ public class SettingsSoundItems {
 	public ToggleButton getToggleButton(){
 		return tglBtn;
 	}
-
 }

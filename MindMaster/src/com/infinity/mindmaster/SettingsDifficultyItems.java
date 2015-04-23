@@ -27,5 +27,4 @@ public class SettingsDifficultyItems {
 	public Spinner getSpinner(){
 		return spinner;
 	}
-
 }

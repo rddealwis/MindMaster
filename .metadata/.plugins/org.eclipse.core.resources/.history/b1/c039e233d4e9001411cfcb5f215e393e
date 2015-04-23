@@ -1,0 +1,96 @@
+package com.infinity.mindmaster;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.example.mindmaster.R;
+
+public class HighScores extends ActionBarActivity {
+	
+	private List<HighScoreItems> mainScreenItems = new ArrayList<HighScoreItems>();
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_high_scores);
+		
+		populateMainScrItems();
+		populateListView();
+	}
+	
+	private void populateMainScrItems() {
+		
+		for(int i=0; i<MainScreen.highScoreArray.length; i++){
+			
+			//mainScreenItems.add(new Highscoresview(MainScreen.highScoreArray[i], MainScreen.highScoreArray[i+1]));
+			Log.d("Value 1:"+MainScreen.highScoreArray[i],"Value 2:"+MainScreen.highScoreArray[i+1]);
+			//mainScreenItems.add(new Highscoresview("hi","hi"));
+			
+		}	
+	}
+	
+	private void populateListView() {
+		
+		ArrayAdapter<HighScoreItems> adapter = new MyListAdapter();
+		ListView list = (ListView)findViewById(R.id.highscores_ListView);
+		list.setAdapter(adapter);
+	}
+	
+	private class MyListAdapter extends ArrayAdapter<HighScoreItems>{
+		
+		public MyListAdapter(){
+			
+			super(HighScores.this, R.layout.highscorestest,mainScreenItems);						
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			
+			View itemView = convertView;
+			if(itemView == null){
+				itemView = getLayoutInflater().inflate(R.layout.highscorestest,parent, false);				
+			}
+			
+			HighScoreItems currentItem = mainScreenItems.get(position);			
+						
+			TextView makeText = (TextView)itemView.findViewById(R.id.textView1);
+			makeText.setText(currentItem.getDisplayText());
+			
+			TextView makeText1 = (TextView)itemView.findViewById(R.id.textView2);
+			makeText1.setText(currentItem.getDisplayText());
+			
+			return itemView;			
+		}		
+		
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.high_scores, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+}

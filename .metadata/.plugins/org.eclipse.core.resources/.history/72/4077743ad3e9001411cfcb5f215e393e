@@ -1,0 +1,62 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_background"
+    tools:context="com.infinity.mindmaster.GameSettings" >
+    
+    <ImageView
+        android:id="@+id/imageViewHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:adjustViewBounds="true"
+        android:maxHeight="100dp"
+        android:maxWidth="100dp"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+        android:src="@drawable/img_header_banner" />
+
+    <ImageView
+        android:id="@+id/imageViewSettings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="62dp"
+        android:maxHeight="500dp"
+        android:src="@drawable/img_settings_banner" />
+    
+    <ListView
+        android:id="@+id/soundSettings_ListView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageViewSettings"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/img_background"
+        android:divider="@color/color_white"
+        android:dividerHeight="5dip"
+        android:maxHeight="50dp"
+        android:maxWidth="50dp" >
+        
+     </ListView>
+     
+    <ListView
+        android:id="@+id/difficultySettings_ListView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/soundSettings_ListView"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/img_background"
+        android:divider="@color/color_white"
+        android:dividerHeight="5dip"
+        android:maxHeight="50dp"
+        android:maxWidth="50dp" >
+        
+     </ListView>
+
+</RelativeLayout>

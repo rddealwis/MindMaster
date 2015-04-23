@@ -28,8 +28,10 @@ public class GameSettings extends ActionBarActivity {
 	private List<SettingsSoundItems> soundSettingsItems = new ArrayList<SettingsSoundItems>();
 	private List<SettingsDifficultyItems> difficultySettingsItems = new ArrayList<SettingsDifficultyItems>();
 	FileAccess fileAccess=new FileAccess();
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game_settings);
 		
@@ -39,6 +41,7 @@ public class GameSettings extends ActionBarActivity {
 		populateDifficultyItems();
 		populateDifficultyListView();
 	}
+	
 	@Override
 	public void onBackPressed() {
 	    String value="";
@@ -52,6 +55,7 @@ public class GameSettings extends ActionBarActivity {
 		}
 	    super.onBackPressed();
 	}
+	
 	private void populateSoundItems() {
 		
 		ToggleButton tglBtn = new ToggleButton(this);		
@@ -93,8 +97,7 @@ public class GameSettings extends ActionBarActivity {
 			tglBtn.setTextOff("OFF");
 			//tglBtn.setChecked(true);
 			Log.d("chwtlk valeu11112: ", MainScreen.settingsArray[0]);
-			tglBtn.setChecked(MainScreen.settingsArray[0].equals("1"));
-			
+			tglBtn.setChecked(MainScreen.settingsArray[0].equals("1"));			
 			
 			if(tglBtn.isChecked()){	            		
         		MainScreen.settingsArray[0]="1";
@@ -117,23 +120,20 @@ public class GameSettings extends ActionBarActivity {
 	        });
 			
 			return itemView;			
-		}		
-		
+		}				
 	}
 	
 	private void populateDifficultyItems() {
 		
 		Spinner spinner = new Spinner(this);		
-		difficultySettingsItems.add(new SettingsDifficultyItems(R.string.settings_list_item_two,R.drawable.img_difficulty,spinner));
-		
+		difficultySettingsItems.add(new SettingsDifficultyItems(R.string.settings_list_item_two,R.drawable.img_difficulty,spinner));		
 	}
 
 	private void populateDifficultyListView() {
 		
 		ArrayAdapter<SettingsDifficultyItems> adapterOne = new DifficultyListAdapter();
 		ListView list = (ListView)findViewById(R.id.difficultySettings_ListView);
-		list.setAdapter(adapterOne);
-		
+		list.setAdapter(adapterOne);		
 	}
 	
 	private class DifficultyListAdapter extends ArrayAdapter<SettingsDifficultyItems>{
@@ -168,23 +168,20 @@ public class GameSettings extends ActionBarActivity {
             spinner.setAdapter(adapter1);
             spinner.setSelection(Integer.valueOf(MainScreen.settingsArray[1])-1);
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            	
 				@Override
-				public void onItemSelected(AdapterView<?> arg0,
-					View arg1, int position, long arg3) {
-					MainScreen.settingsArray[1]=String.valueOf(position+1);
+				public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long arg3) {
+						MainScreen.settingsArray[1]=String.valueOf(position+1);
 					}
-
 					 
 					@Override
 					public void onNothingSelected(AdapterView<?> arg0) {
-						// TODO Auto-generated method stub
-
+						
 					}
 				});
 			
 			return itemView;			
-		}		
-		
+		}				
 	}
 
 	@Override
