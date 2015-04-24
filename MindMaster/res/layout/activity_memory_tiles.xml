@@ -92,7 +92,6 @@
 	        android:layout_alignLeft="@+id/gridView_Tile"
 	        android:layout_alignTop="@+id/gridView_Tile"
 	        android:src="@drawable/img_tile" 
-	        android:clickable="true"
 	        android:onClick="imageViewCol1Clicked"/>
 
 	    <ImageView
@@ -102,7 +101,6 @@
 	        android:layout_alignTop="@+id/gridView_Tile"
 	        android:layout_toRightOf="@+id/imageViewCol1"
 	        android:src="@drawable/img_tile"
-	        android:clickable="true"
 	        android:onClick="imageViewCol2Clicked" />
 
 	    <ImageView
@@ -112,7 +110,6 @@
 	        android:layout_alignTop="@+id/gridView_Tile"
 	        android:layout_toRightOf="@+id/imageViewCol2"
 	        android:src="@drawable/img_tile"
-	        android:clickable="true"
 	        android:onClick="imageViewCol3Clicked" />
 
 	    <ImageView
@@ -122,7 +119,6 @@
 	        android:layout_alignTop="@+id/gridView_Tile"
 	        android:layout_toRightOf="@+id/imageViewCol3"
 	        android:src="@drawable/img_tile"
-	        android:clickable="true"
 	        android:onClick="imageViewCol4Clicked" />
 
 	    <ImageView
@@ -132,7 +128,6 @@
 	        android:layout_below="@+id/imageViewCol1"
 	        android:layout_toLeftOf="@+id/imageViewCol2"
 	        android:src="@drawable/img_tile" 
-	        android:clickable="true"
 	        android:onClick="imageViewCol5Clicked"/>
 
 	    <ImageView
@@ -142,7 +137,6 @@
 	        android:layout_alignTop="@+id/imageViewCol5"
 	        android:layout_toLeftOf="@+id/imageViewCol3"
 	        android:src="@drawable/img_tile" 
-	        android:clickable="true"
 	        android:onClick="imageViewCol6Clicked"/>
 
 	    <ImageView
@@ -152,7 +146,6 @@
 	        android:layout_alignTop="@+id/imageViewCol6"
 	        android:layout_toLeftOf="@+id/imageViewCol4"
 	        android:src="@drawable/img_tile" 
-	        android:clickable="true"
 	        android:onClick="imageViewCol7Clicked"/>
 
 	    <ImageView
@@ -162,7 +155,6 @@
 	        android:layout_below="@+id/imageViewCol3"
 	        android:layout_toRightOf="@+id/imageViewCol3"
 	        android:src="@drawable/img_tile"
-	        android:clickable="true"
 	        android:onClick="imageViewCol8Clicked" />
 
 	    <ImageView
@@ -172,7 +164,6 @@
 	        android:layout_below="@+id/imageViewCol5"
 	        android:layout_toLeftOf="@+id/imageViewCol6"
 	        android:src="@drawable/img_tile" 
-	        android:clickable="true"
 	        android:onClick="imageViewCol9Clicked"/>
 
 	    <ImageView
@@ -182,7 +173,6 @@
 	        android:layout_alignTop="@+id/imageViewCol9"
 	        android:layout_toLeftOf="@+id/imageViewCol7"
 	        android:src="@drawable/img_tile" 
-	        android:clickable="true"
 	        android:onClick="imageViewCol10Clicked"/>
 
 	    <ImageView
@@ -192,7 +182,6 @@
 	        android:layout_alignLeft="@+id/imageViewCol7"
 	        android:layout_alignTop="@+id/imageViewCol10"
 	        android:src="@drawable/img_tile" 
-	        android:clickable="true"
 	        android:onClick="imageViewCol11Clicked"/>
 
 	    <ImageView
@@ -202,7 +191,6 @@
 	        android:layout_alignTop="@+id/imageViewCol11"
 	        android:layout_toRightOf="@+id/imageViewCol11"
 	        android:src="@drawable/img_tile" 
-	        android:clickable="true"
 	        android:onClick="imageViewCol12Clicked"/>
 
 	    <ImageView
@@ -212,7 +200,6 @@
 	        android:layout_below="@+id/imageViewCol9"
 	        android:layout_toLeftOf="@+id/imageViewCol10"
 	        android:src="@drawable/img_tile" 
-	        android:clickable="true"
 	        android:onClick="imageViewCol13Clicked"/>
 
 	    <ImageView
@@ -222,7 +209,6 @@
 	        android:layout_alignTop="@+id/imageViewCol13"
 	        android:layout_toLeftOf="@+id/imageViewCol11"
 	        android:src="@drawable/img_tile"
-	        android:clickable="true"
 	        android:onClick="imageViewCol14Clicked" />
 
 	    <ImageView
@@ -232,7 +218,6 @@
 	        android:layout_alignTop="@+id/imageViewCol14"
 	        android:layout_toLeftOf="@+id/imageViewCol12"
 	        android:src="@drawable/img_tile" 
-	        android:clickable="true"
 	        android:onClick="imageViewCol15Clicked"/>
 
 	    <ImageView
@@ -242,7 +227,7 @@
 	        android:layout_alignRight="@+id/gridView_Tile"
 	        android:layout_alignTop="@+id/imageViewCol15"
 	        android:src="@drawable/img_tile" 
-	        android:clickable="true"
+	        android:clickable="false"
 	        android:onClick="imageViewCol16Clicked"/>
     
 	</RelativeLayout>
