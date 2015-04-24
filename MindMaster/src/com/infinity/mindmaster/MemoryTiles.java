@@ -55,7 +55,7 @@ public class MemoryTiles extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);		
-		GetUserName();
+		//GetUserName();
 		setContentView(R.layout.activity_memory_tiles);
 		gridview = (GridView) findViewById(R.id.gridView_Tile);
 		soundStatus=MainScreen.settingsArray[0];
@@ -215,8 +215,6 @@ public class MemoryTiles extends ActionBarActivity {
 		
 		if (checkCount < randomNumbers.size()) {
 			if (position != (Integer) randomNumbers.get(checkCount)) {					
-				IncreaseArraySize();
-				MainScreen.highScoreArray[MainScreen.highScoreArray.length-1]=String.valueOf(score);
 				alertDialog.setTitle("Game Over");
 				alertDialog.setMessage("Sorry, You got it wrong! Try Again! Your score is "+score+"!!!");
 				alertDialog.setIcon(R.drawable.logo);
@@ -225,7 +223,8 @@ public class MemoryTiles extends ActionBarActivity {
 							public void onClick(DialogInterface dialog,
 									int which) {
 								checkCount=0;
-								finish();
+								GetUserName();
+								//finish();
 							}
 						});
 
@@ -535,11 +534,35 @@ public class MemoryTiles extends ActionBarActivity {
 		  Editable name = input.getText();
 		  IncreaseArraySize();
 		  MainScreen.highScoreArray[MainScreen.highScoreArray.length-1]=String.valueOf(name);
-		 
+		  IncreaseArraySize();
+		  MainScreen.highScoreArray[MainScreen.highScoreArray.length-1]=String.valueOf(score);
+
+		  WriteHighscoreFile();
+
+			Log.d("Error ekk yako1o", "ane manda1");
+		 finish();
 		  }
 		});
 		
 		alert.show();		
+	}
+	
+	public void WriteHighscoreFile(){
+		
+		String value="";
+
+		Log.d("MainScreen.highScoreArray.length560", String.valueOf(MainScreen.highScoreArray.length));
+		for(int i=0; i<MainScreen.highScoreArray.length;i++){
+	    value+=MainScreen.highScoreArray[i]+";"+MainScreen.highScoreArray[i+1]+";";
+	    i++;
+		}
+	    try {
+			fileAccess.FileWrite("highscore", value);
+			Log.d("chwtlk valeu: ", value);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public static void SortArray(){
@@ -615,13 +638,21 @@ public class MemoryTiles extends ActionBarActivity {
 	
 	public void IncreaseArraySize() {
 		
-		   String[] temp = new String[MainScreen.highScoreArray.length + 1];
+		   /*String[] temp = new String[MainScreen.highScoreArray.length + 1];
 
 		   for (int i = 0; i < MainScreen.highScoreArray.length; i++){
 			  temp[i] = MainScreen.highScoreArray[i];
 		   }
 		   
-		   MainScreen.highScoreArray = temp;
+		   MainScreen.highScoreArray = temp;*/
+		
+		String[] copyFrom  = MainScreen.highScoreArray;
+		String[] copyTo    = new String[MainScreen.highScoreArray.length + 1];
+
+		//System.out.println(Arrays.toString(copyFrom));
+		System.arraycopy(copyFrom, 0, copyTo, 0, copyFrom.length);
+		//System.out.println(Arrays.toString(copyTo));
+		MainScreen.highScoreArray=copyTo;
 	}			
 }
 

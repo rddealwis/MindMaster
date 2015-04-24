@@ -32,8 +32,15 @@ public class HighScores extends ActionBarActivity {
 	
 	private void populateHighScoreItems() {
 		MemoryTiles.SortArray();
-		for(int i=0; i<4; i++){
-			
+		int arraySize=MainScreen.highScoreArray.length;
+		int countSize=0;
+		
+		if(arraySize>8)
+			countSize=8;
+		else
+			countSize=arraySize;
+		
+		for(int i=0; i<countSize; i++){
 			highScoreItems.add(new HighScoreItems(MainScreen.highScoreArray[i], MainScreen.highScoreArray[i+1]));
 			i++;
 			
