@@ -7,6 +7,7 @@ import java.util.Random;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -223,9 +224,18 @@ public class MemoryTiles extends ActionBarActivity {
 							public void onClick(DialogInterface dialog,
 									int which) {
 								checkCount=0;
+								int arraySize=MainScreen.highScoreArray.length;
+								int pos=0;								
+								if(arraySize>8)
+									pos=8;
+								else
+									pos=arraySize;
+								if(score>Integer.valueOf(MainScreen.highScoreArray[pos-1])){
 								GetUserName();
-								//finish();
-							}
+								}
+								else{
+								finish();
+							}}
 						});
 
 				alertDialog.show();		
@@ -522,14 +532,14 @@ public class MemoryTiles extends ActionBarActivity {
 		
 		AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
-		alert.setTitle("Hi Gamer!!!");
+		alert.setTitle("You achieved a High Score!!!");
 		alert.setMessage("Please give your Name:");
 
 		
 		final EditText input = new EditText(this);
 		alert.setView(input);
 
-		alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+		alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 		public void onClick(DialogInterface dialog, int whichButton) {
 		  Editable name = input.getText();
 		  IncreaseArraySize();
@@ -539,12 +549,22 @@ public class MemoryTiles extends ActionBarActivity {
 
 		  WriteHighscoreFile();
 
-			Log.d("Error ekk yako1o", "ane manda1");
 		 finish();
 		  }
 		});
 		
-		alert.show();		
+		alert.show();
+		AlertDialog dialog = alert.create();
+		dialog.setOnShowListener(new OnShowListener() {
+
+		    @Override
+		    public void onShow(DialogInterface dialog) {
+		        if(true)
+		        ((AlertDialog)dialog).getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+		    }
+		});
+		
+		
 	}
 	
 	public void WriteHighscoreFile(){
