@@ -49,11 +49,8 @@ public class MemoryTiles extends ActionBarActivity {
 	FileAccess fileAccess=new FileAccess();
 	String soundStatus;
 	ImageView[] tilesImageView = new ImageView[16];
-	
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
 		super.onCreate(savedInstanceState);		
 		GetUserName();
 		setContentView(R.layout.activity_memory_tiles);
@@ -102,9 +99,11 @@ public class MemoryTiles extends ActionBarActivity {
 		Button btn = (Button) findViewById(R.id.btnStart);
 		Log.d("startPlay", "disable");
 		btn.setClickable(false);
+		//btn.setVisibility(View.INVISIBLE);
 		playGame();
 		Log.d("startPlay", "disable");
-		btn.setClickable(true);
+		btn.setClickable(false);
+		//btn.setVisibility(View.VISIBLE);
 	}
 	
 	public void playGame(){
@@ -464,7 +463,7 @@ public class MemoryTiles extends ActionBarActivity {
 	public void EnableDisableImageViews(boolean status){
 		 
 		for(int i=0;i<16;i++){
-		tilesImageView[i].setClickable(status);
+		tilesImageView[i].setEnabled(status);
 		}
 			  
 			  

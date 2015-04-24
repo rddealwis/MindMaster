@@ -50,28 +50,28 @@ public class MemoryTiles extends ActionBarActivity {
 	String soundStatus;
 	ImageView[] tilesImageView = new ImageView[16];
 	
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
-		super.onCreate(savedInstanceState);		
-		GetUserName();
+		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_memory_tiles);
 		gridview = (GridView) findViewById(R.id.gridView_Tile);
 		soundStatus=MainScreen.settingsArray[0];
+		
 		if(soundStatus=="1"){
-		buttonSound = MediaPlayer.create(MemoryTiles.this, R.raw.button_click);
+			buttonSound = MediaPlayer.create(MemoryTiles.this, R.raw.button_click);
 		}
 		SetTimeGapValue();
 		SetImageViews();
+		//GetUserName();
 	}
 	
 	private void SetTimeGapValue() {
 		
 		switch(Integer.valueOf(MainScreen.settingsArray[1])){
-			case 1: timeGap=1000;
+			case 1: timeGap=1500;
 				break;
-			case 2:timeGap=750;
+			case 2:timeGap=1000;
 				break;
 			case 3:timeGap=500;
 			break;		
@@ -100,11 +100,9 @@ public class MemoryTiles extends ActionBarActivity {
 	public void startPlay(View v)
 	{		
 		Button btn = (Button) findViewById(R.id.btnStart);
-		Log.d("startPlay", "disable");
-		btn.setClickable(false);
+		btn.setEnabled(false);
 		playGame();
-		Log.d("startPlay", "disable");
-		btn.setClickable(true);
+		btn.setEnabled(true);
 	}
 	
 	public void playGame(){
@@ -149,7 +147,7 @@ public class MemoryTiles extends ActionBarActivity {
 			}
 		} catch(Exception e){
 				Log.d("Error: ", e.toString());
-			}
+		}
 	}
 	
 	public void colorChange(int value, int time){
@@ -197,19 +195,24 @@ public class MemoryTiles extends ActionBarActivity {
 
 	private boolean CheckUserInput(int position) {
 		
+		try{
+			Log.d("bla bla", "hi hi hi");
+		
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 		
 		if (checkCount < randomNumbers.size()) {
-			if (position != (Integer) randomNumbers.get(checkCount)) {					
-				IncreaseArraySize();
-				MainScreen.highScoreArray[MainScreen.highScoreArray.length-1]=String.valueOf(score);
-				alertDialog.setTitle("Game Over");
+			Log.d("bla bla", "199");
+			if (position != (Integer) randomNumbers.get(checkCount)) {
+				Log.d("bla bla", "201");
+				alertDialog.setTitle("Game Over");				
+				//MainScreen.highScoreArray[MainScreen.highScoreArray.length]=String.valueOf(score);
 				alertDialog.setMessage("Sorry, You got it wrong! Try Again! Your score is "+score+"!!!");
 				alertDialog.setIcon(R.drawable.logo);
 				alertDialog.setPositiveButton("OK",
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog,
 									int which) {
+								Log.d("bla bla", "210");
 								checkCount=0;
 								finish();
 							}
@@ -217,9 +220,13 @@ public class MemoryTiles extends ActionBarActivity {
 
 				alertDialog.show();		
 			} else {
+				Log.d("bla bla", "218 else");
 				final TextView changeScore = (TextView) findViewById(R.id.textViewScore);
+				Log.d("bla bla", "after final 220");
 				changeScore.setText("Score: "+(++score));
+				Log.d("bla bla", "changeScore 222");
 				if (checkCount == randomNumbers.size() - 1) {
+					Log.d("bla bla", "222");
 					Toast.makeText(MemoryTiles.this,
 							"Congradulations! Next Level!!!",
 							Toast.LENGTH_SHORT).show();
@@ -230,10 +237,17 @@ public class MemoryTiles extends ActionBarActivity {
 			}
 		}
 		checkCount++;
+		
+		}
+		
+		catch(Exception e){
+			Log.d("Error me: ", e.toString());
+		}
 		return false;
 	}	
 
 	private void SaveToFile() {
+		
 		String value="";
 		for(int i=0; i<MainScreen.highScoreArray.length;i++){
 		    value+=MainScreen.highScoreArray[i]+";"+MainScreen.highScoreArray[i+1]+";";
@@ -381,43 +395,42 @@ public class MemoryTiles extends ActionBarActivity {
 	}	
 	
 	private void GetUserName() {
+		
 		AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
 		alert.setTitle("Hi Gamer!!!");
 		alert.setMessage("Please give your Name:");
-
 		
 		final EditText input = new EditText(this);
 		alert.setView(input);
 
 		alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-		public void onClick(DialogInterface dialog, int whichButton) {
-		  Editable name = input.getText();
-		  IncreaseArraySize();
-		  MainScreen.highScoreArray[MainScreen.highScoreArray.length-1]=String.valueOf(name);
-		 
-		  }
-		});
-		alert.show();
-		
+			
+			public void onClick(DialogInterface dialog, int whichButton) {
+			  String name = input.getText().toString();
+			  MainScreen.highScoreArray[MainScreen.highScoreArray.length]=String.valueOf(name);
+			 
+			  }
+			});
+		alert.show();		
 	}
 	
 	public static void SortArray(){
 		
 		 int j;
-	     boolean flag = true; 
-	     int temp;   
+	     boolean flag = true;   // set flag to true to begin first pass
+	     int temp;   //holding variable
 	     String temp2;
 	     int[] arrayTempInteger=new int[MainScreen.highScoreArray.length/2];
 	     String[] arrayTempString=new String[MainScreen.highScoreArray.length/2];
 	     int k=0;
+	     
 	     for(int i=0; i<MainScreen.highScoreArray.length; i++){
 	    	 arrayTempString[k]=MainScreen.highScoreArray[i];
 	    	 arrayTempInteger[k]=Integer.valueOf(MainScreen.highScoreArray[i+1]);
 	    	 i++;	    
 	    	 k++;
-	     }
-	     
+	     }	     
 	     
 	     for(int i=0; i < arrayTempInteger.length-1; i++){
 	    	 
@@ -435,6 +448,7 @@ public class MemoryTiles extends ActionBarActivity {
 	            }
 	        }
 	     k=0;
+	     
 	     for(int i=0; i<MainScreen.highScoreArray.length; i++){
 	    	 MainScreen.highScoreArray[i]=arrayTempString[k];
 	    	 MainScreen.highScoreArray[i+1]=String.valueOf(arrayTempInteger[k]);
@@ -442,41 +456,32 @@ public class MemoryTiles extends ActionBarActivity {
 	    	 k++;
 	     }
 	}
+	
 	public void SetImageViews(){
-		      tilesImageView[0]=(ImageView)findViewById(R.id.imageViewCol1); 
-		      tilesImageView[1]=(ImageView)findViewById(R.id.imageViewCol2); 
-		      tilesImageView[2]=(ImageView)findViewById(R.id.imageViewCol3); 
-		      tilesImageView[3]=(ImageView)findViewById(R.id.imageViewCol4); 
-		      tilesImageView[4]=(ImageView)findViewById(R.id.imageViewCol5); 
-		      tilesImageView[5]=(ImageView)findViewById(R.id.imageViewCol6); 
-		      tilesImageView[6]=(ImageView)findViewById(R.id.imageViewCol7); 
-		      tilesImageView[7]=(ImageView)findViewById(R.id.imageViewCol8); 
-		      tilesImageView[8]=(ImageView)findViewById(R.id.imageViewCol9); 
-		      tilesImageView[9]=(ImageView)findViewById(R.id.imageViewCol10); 
-		      tilesImageView[10]=(ImageView)findViewById(R.id.imageViewCol11); 
-		      tilesImageView[11]=(ImageView)findViewById(R.id.imageViewCol12);
-		      tilesImageView[12]=(ImageView)findViewById(R.id.imageViewCol13); 
-		      tilesImageView[13]=(ImageView)findViewById(R.id.imageViewCol14); 
-		      tilesImageView[14]=(ImageView)findViewById(R.id.imageViewCol15); 
-		      tilesImageView[15]=(ImageView)findViewById(R.id.imageViewCol16); 	  
 		
+		 tilesImageView[0]=(ImageView)findViewById(R.id.imageViewCol1); 
+		 tilesImageView[1]=(ImageView)findViewById(R.id.imageViewCol2); 
+		 tilesImageView[2]=(ImageView)findViewById(R.id.imageViewCol3); 
+		 tilesImageView[3]=(ImageView)findViewById(R.id.imageViewCol4); 
+		 tilesImageView[4]=(ImageView)findViewById(R.id.imageViewCol5); 
+		 tilesImageView[5]=(ImageView)findViewById(R.id.imageViewCol6); 
+		 tilesImageView[6]=(ImageView)findViewById(R.id.imageViewCol7); 
+		 tilesImageView[7]=(ImageView)findViewById(R.id.imageViewCol8); 
+		 tilesImageView[8]=(ImageView)findViewById(R.id.imageViewCol9); 
+		 tilesImageView[9]=(ImageView)findViewById(R.id.imageViewCol10); 
+		 tilesImageView[10]=(ImageView)findViewById(R.id.imageViewCol11); 
+		 tilesImageView[11]=(ImageView)findViewById(R.id.imageViewCol12);
+		 tilesImageView[12]=(ImageView)findViewById(R.id.imageViewCol13); 
+		 tilesImageView[13]=(ImageView)findViewById(R.id.imageViewCol14); 
+		 tilesImageView[14]=(ImageView)findViewById(R.id.imageViewCol15); 
+		 tilesImageView[15]=(ImageView)findViewById(R.id.imageViewCol16); 	  		
 	}
+	
 	public void EnableDisableImageViews(boolean status){
 		 
 		for(int i=0;i<16;i++){
-		tilesImageView[i].setClickable(status);
-		}
-			  
-			  
-	    }
-		public void IncreaseArraySize() {
-		   String[] temp = new String[MainScreen.highScoreArray.length + 1];
-
-		   for (int i = 0; i < MainScreen.highScoreArray.length; i++){
-			  temp[i] = MainScreen.highScoreArray[i];
-		   }
-		   MainScreen.highScoreArray = temp;
-		}		
-		
-	}
+			tilesImageView[i].setEnabled(status);
+		}			  
+	}  		
+}
 

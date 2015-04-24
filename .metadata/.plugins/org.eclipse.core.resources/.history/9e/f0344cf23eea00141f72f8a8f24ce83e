@@ -49,17 +49,14 @@ public class MemoryTiles extends ActionBarActivity {
 	FileAccess fileAccess=new FileAccess();
 	String soundStatus;
 	ImageView[] tilesImageView = new ImageView[16];
-	
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
 		super.onCreate(savedInstanceState);		
 		GetUserName();
 		setContentView(R.layout.activity_memory_tiles);
 		gridview = (GridView) findViewById(R.id.gridView_Tile);
 		soundStatus=MainScreen.settingsArray[0];
-		if(soundStatus=="1"){
+		if(soundStatus="1"){
 		buttonSound = MediaPlayer.create(MemoryTiles.this, R.raw.button_click);
 		}
 		SetTimeGapValue();
@@ -69,9 +66,9 @@ public class MemoryTiles extends ActionBarActivity {
 	private void SetTimeGapValue() {
 		
 		switch(Integer.valueOf(MainScreen.settingsArray[1])){
-			case 1: timeGap=1000;
+			case 1: timeGap=1500;
 				break;
-			case 2:timeGap=750;
+			case 2:timeGap=1000;
 				break;
 			case 3:timeGap=500;
 			break;		
@@ -100,11 +97,9 @@ public class MemoryTiles extends ActionBarActivity {
 	public void startPlay(View v)
 	{		
 		Button btn = (Button) findViewById(R.id.btnStart);
-		Log.d("startPlay", "disable");
-		btn.setClickable(false);
+		btn.setEnabled(false);
 		playGame();
-		Log.d("startPlay", "disable");
-		btn.setClickable(true);
+		btn.setEnabled(true);
 	}
 	
 	public void playGame(){
@@ -464,7 +459,7 @@ public class MemoryTiles extends ActionBarActivity {
 	public void EnableDisableImageViews(boolean status){
 		 
 		for(int i=0;i<16;i++){
-		tilesImageView[i].setClickable(status);
+		tilesImageView[i].setEnabled(status);
 		}
 			  
 			  
