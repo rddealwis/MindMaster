@@ -44,6 +44,14 @@ public class GameSettings extends ActionBarActivity {
 	}
 	
 	@Override
+	public boolean dispatchTouchEvent(MotionEvent ev){
+	   if(ev.getAction()==MotionEvent.ACTION_MOVE)
+	      return true;
+	   return super.dispatchTouchEvent(ev);
+	}
+	
+	
+	@Override
 	public void onBackPressed() {
 	    String value="";
 	    value=MainScreen.settingsArray[0]+";"+MainScreen.settingsArray[1]+";";
@@ -183,13 +191,6 @@ public class GameSettings extends ActionBarActivity {
 			
 			return itemView;			
 		}				
-	}
-	
-	@Override
-	public boolean dispatchTouchEvent(MotionEvent ev){
-	   if(ev.getAction()==MotionEvent.ACTION_MOVE)
-	      return true;
-	   return super.dispatchTouchEvent(ev);
 	}
 
 	@Override

@@ -27,7 +27,6 @@ import android.os.Bundle;
 import android.provider.SyncStateContract.Helpers;
 import android.text.Editable;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -84,13 +83,16 @@ public class MainScreen extends Activity {
 		} catch (IOException e) {
 			Log.d("Error error error: ", e.toString());
 		}		
-	}		
+	}	
+	
+	
 
 	@Override
 	protected void onDestroy() {
 		
 		super.onDestroy();
-	}	
+	}
+	
 		
 	private void populateMainScrItems() {
 		
@@ -177,12 +179,4 @@ public class MainScreen extends Activity {
 			}
 		});		
 	}
-	
-	@Override
-	public boolean dispatchTouchEvent(MotionEvent ev){
-	   if(ev.getAction()==MotionEvent.ACTION_MOVE)
-	      return true;
-	   return super.dispatchTouchEvent(ev);
-	}
-	
 }

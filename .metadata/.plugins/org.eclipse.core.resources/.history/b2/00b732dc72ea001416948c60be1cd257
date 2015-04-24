@@ -64,13 +64,12 @@ public class MemoryTiles extends ActionBarActivity {
 			buttonSound = MediaPlayer.create(MemoryTiles.this, R.raw.button_click);
 		}
 		
-		Button btn = (Button) findViewById(R.id.btnStart);
+		/*Button btn = (Button) findViewById(R.id.btnStart);
 		Log.d("startPlay", "disable");
-		btn.setClickable(true);
+		btn.setEnabled(false);*/
 		
 		SetTimeGapValue();
 		SetImageViews();
-		EnableDisableImageViews(false);
 	}
 	
 	private void SetTimeGapValue() {
@@ -108,10 +107,10 @@ public class MemoryTiles extends ActionBarActivity {
 	{		
 		Button btn = (Button) findViewById(R.id.btnStart);
 		Log.d("startPlay", "disable");
-		btn.setClickable(false);
+		btn.setEnabled(false);
 		playGame();
 		Log.d("startPlay", "disable");
-		//btn.setClickable(true);
+		btn.setEnabled(true);
 	}
 	
 	public void playGame(){
@@ -121,8 +120,7 @@ public class MemoryTiles extends ActionBarActivity {
 		GenerateRandomValues(gameLevel++);
 		EnableDisableImageViews(false);
 		TilesColorChange();
-		Log.d("Rasanjana", "de");
-		//EnableDisableImageViews(true);
+		EnableDisableImageViews(true);
 	}
 
 	public void GenerateRandomValues(int amount) {
@@ -197,7 +195,6 @@ public class MemoryTiles extends ActionBarActivity {
 	        handler.postDelayed(new Runnable() { 
 	             public void run() { 
 	               testImageView[0].setImageResource(R.drawable.img_tile);
-	               //if this is the last square setEnable true
 	             } 
 	        }, timeGap*(time+1)); }
 			catch(Exception e){

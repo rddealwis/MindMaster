@@ -121,7 +121,6 @@ public class MemoryTiles extends ActionBarActivity {
 		GenerateRandomValues(gameLevel++);
 		EnableDisableImageViews(false);
 		TilesColorChange();
-		Log.d("Rasanjana", "de");
 		//EnableDisableImageViews(true);
 	}
 
@@ -197,7 +196,6 @@ public class MemoryTiles extends ActionBarActivity {
 	        handler.postDelayed(new Runnable() { 
 	             public void run() { 
 	               testImageView[0].setImageResource(R.drawable.img_tile);
-	               //if this is the last square setEnable true
 	             } 
 	        }, timeGap*(time+1)); }
 			catch(Exception e){
