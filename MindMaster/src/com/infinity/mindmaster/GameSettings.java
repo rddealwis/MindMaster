@@ -67,6 +67,7 @@ public class GameSettings extends ActionBarActivity {
 		
 		ArrayAdapter<SettingsSoundItems> adapter = new SoundListAdapter();
 		ListView list = (ListView)findViewById(R.id.soundSettings_ListView);
+		list.setEnabled(false);
 		list.setAdapter(adapter);
 	}
 	
@@ -134,6 +135,7 @@ public class GameSettings extends ActionBarActivity {
 		
 		ArrayAdapter<SettingsDifficultyItems> adapterOne = new DifficultyListAdapter();
 		ListView list = (ListView)findViewById(R.id.difficultySettings_ListView);
+		list.setEnabled(false);
 		list.setAdapter(adapterOne);		
 	}
 	

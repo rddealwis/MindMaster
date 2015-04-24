@@ -4,12 +4,18 @@ The aim of the game is to find the correct order which the tiles got colored.
 
 The game difficulty increases with the level.
 
-There are several game modes:
-- Classic: the game difficulty increases with the level, the games can be wrong three times
-- Speed: you have less than 1 second to memorize the tiles locations
-- Crazy: it will drive you crazy!
-- Impossible Mission: probably one of the most difficult modes
-- Endurance: quite easy but be patient
-- Kamikaze: very hard, no mistake is allowed (0 lives)
+There are 3 game modes:
 
+~ Easy ~
+Quite easy but be patient.
+
+~ Medium ~
+You have less than 1 second to memorize the tile sequence.
+
+~ Hard ~
+It will drive you crazy!
+
+
+~~~~~~~~~~~~~~~~~~~~
 Be the best on each mode & test how good your short term memory is.
+~~~~~~~~~~~~~~~~~~~~

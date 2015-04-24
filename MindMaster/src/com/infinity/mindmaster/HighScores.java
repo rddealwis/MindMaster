@@ -44,6 +44,7 @@ public class HighScores extends ActionBarActivity {
 		
 		ArrayAdapter<HighScoreItems> adapter = new HighSCoreAdapter();
 		ListView list = (ListView)findViewById(R.id.highscores_ListView);
+		list.setEnabled(false);
 		list.setAdapter(adapter);
 	}
 	

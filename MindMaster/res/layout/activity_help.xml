@@ -40,6 +40,7 @@
          android:textAppearance="?android:attr/textAppearanceMedium"
          android:isScrollContainer="true"
          android:scrollbars="vertical"
+         android:scrollbarThumbVertical="@drawable/scroll_bar_style"
          android:gravity="center_horizontal"
          android:scrollbarStyle="outsideOverlay"
          android:textColor="@color/color_white"

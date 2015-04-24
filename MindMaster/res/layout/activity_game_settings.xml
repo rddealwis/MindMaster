@@ -39,7 +39,8 @@
         android:divider="@color/color_white"
         android:dividerHeight="5dp"
         android:maxHeight="50dp"
-        android:maxWidth="50dp" >
+        android:maxWidth="50dp"
+        android:listSelector="@drawable/list_selector" >
         
      </ListView>
      
@@ -55,7 +56,8 @@
         android:divider="@color/color_white"
         android:dividerHeight="5dp"
         android:maxHeight="50dp"
-        android:maxWidth="50dp" >
+        android:maxWidth="50dp"
+        android:listSelector="@drawable/list_selector" >
         
      </ListView>
 

@@ -103,7 +103,7 @@ public class MainScreen extends Activity {
 	private void populateListView() {
 		
 		ArrayAdapter<MainScreenItems> adapter = new MyListAdapter();
-		ListView list = (ListView)findViewById(R.id.listViewMain);
+		ListView list = (ListView)findViewById(R.id.listViewMain);	
 		list.setAdapter(adapter);
 	}
 	

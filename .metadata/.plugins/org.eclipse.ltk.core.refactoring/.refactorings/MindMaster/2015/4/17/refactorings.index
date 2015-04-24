@@ -33,3 +33,5 @@
 1429805952225	Rename method 'populateMainScrItems'
 1429805974586	Rename method 'populateListView'
 1429806691345	Rename type 'MyListAdapter'
+1429888612447	Rename resource 'custom_scroll_style.xml'
+1429888626446	Delete element

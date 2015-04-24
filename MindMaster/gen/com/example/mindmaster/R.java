@@ -858,11 +858,12 @@ containing a value of this type.
         public static final int abc_split_action_bar_is_narrow=0x7f070002;
     }
     public static final class color {
-        public static final int abc_search_url_text_holo=0x7f080005;
+        public static final int abc_search_url_text_holo=0x7f080006;
         public static final int abc_search_url_text_normal=0x7f080000;
         public static final int abc_search_url_text_pressed=0x7f080002;
         public static final int abc_search_url_text_selected=0x7f080001;
         public static final int color_black=0x7f080004;
+        public static final int color_grey=0x7f080005;
         public static final int color_white=0x7f080003;
     }
     public static final class dimen {
@@ -1097,8 +1098,12 @@ containing a value of this type.
         public static final int img_start=0x7f020064;
         public static final int img_tile=0x7f020065;
         public static final int img_user_click=0x7f020066;
-        public static final int logo=0x7f020067;
-        public static final int logo_mind_master=0x7f020068;
+        public static final int list_selector=0x7f020067;
+        public static final int list_selector_focused=0x7f020068;
+        public static final int list_selector_pressed=0x7f020069;
+        public static final int logo=0x7f02006a;
+        public static final int logo_mind_master=0x7f02006b;
+        public static final int scroll_bar_style=0x7f02006c;
     }
     public static final class id {
         public static final int TextViewLevelNo=0x7f060046;
