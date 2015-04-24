@@ -44,16 +44,26 @@ public class MemoryTiles extends ActionBarActivity {
 	public int timeGap=0;
 	GridView gridview = null;
 	Handler handlerClick = new Handler();
-	final ImageView[] testImageViewClick = new ImageView[1];
+	//final ImageView[] testImageViewClick = new ImageView[1];
 	MediaPlayer buttonSound = null;	
 	FileAccess fileAccess=new FileAccess();
+	String soundStatus;
+	ImageView[] tilesImageView = new ImageView[16];
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_memory_tiles);
 		gridview = (GridView) findViewById(R.id.gridView_Tile);
-		buttonSound = MediaPlayer.create(MemoryTiles.this, R.raw.button_click);
+		soundStatus=MainScreen.settingsArray[0];
+		
+		if(soundStatus=="1"){
+			buttonSound = MediaPlayer.create(MemoryTiles.this, R.raw.button_click);
+		}
 		SetTimeGapValue();
+		SetImageViews();
+		//GetUserName();
 	}
 	
 	private void SetTimeGapValue() {
@@ -89,7 +99,10 @@ public class MemoryTiles extends ActionBarActivity {
 
 	public void startPlay(View v)
 	{		
+		Button btn = (Button) findViewById(R.id.btnStart);
+		btn.setEnabled(false);
 		playGame();
+		btn.setEnabled(true);
 	}
 	
 	public void playGame(){
@@ -97,20 +110,23 @@ public class MemoryTiles extends ActionBarActivity {
 		final TextView levelTxt = (TextView) findViewById(R.id.TextViewLevelNo);
 		levelTxt.setText("Level: "+(++level));
 		GenerateRandomValues(gameLevel++);
+		EnableDisableImageViews(false);
 		TilesColorChange();
+		EnableDisableImageViews(true);
 	}
 
 	public void GenerateRandomValues(int amount) {
 
 		// amount=4;
 		try{
-		randomNumbers.removeAll(randomNumbers);
-		checkCount=0;
-		Random rand = new Random();
-		for (int generateCount = 0; generateCount < amount; generateCount++) {
-
-			randomNumbers.add(rand.nextInt((15 - 0) + 1) + 0);
-		}}
+			randomNumbers.removeAll(randomNumbers);
+			checkCount=0;
+			Random rand = new Random();
+			for (int generateCount = 0; generateCount < amount; generateCount++) {
+	
+				randomNumbers.add(rand.nextInt((15 - 0) + 1) + 0);
+			}
+		}
 		catch(Exception e){
 			Log.d("Error: ", e.toString());
 		}
@@ -131,7 +147,7 @@ public class MemoryTiles extends ActionBarActivity {
 			}
 		} catch(Exception e){
 				Log.d("Error: ", e.toString());
-			}
+		}
 	}
 	
 	public void colorChange(int value, int time){
@@ -179,38 +195,38 @@ public class MemoryTiles extends ActionBarActivity {
 
 	private boolean CheckUserInput(int position) {
 		
+		try{
+			Log.d("bla bla", "hi hi hi");
+		
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 		
 		if (checkCount < randomNumbers.size()) {
+			Log.d("bla bla", "199");
 			if (position != (Integer) randomNumbers.get(checkCount)) {
-				if(!(score>Integer.valueOf(MainScreen.highScoreArray[7]))){
-				alertDialog.setTitle("Game Over");
-				alertDialog.setMessage("Sorry, You got it wrong! Try Agian! Your score is "+score+"!!!");
+				Log.d("bla bla", "201");
+				alertDialog.setTitle("Game Over");				
+				//MainScreen.highScoreArray[MainScreen.highScoreArray.length]=String.valueOf(score);
+				alertDialog.setMessage("Sorry, You got it wrong! Try Again! Your score is "+score+"!!!");
 				alertDialog.setIcon(R.drawable.logo);
 				alertDialog.setPositiveButton("OK",
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog,
 									int which) {
+								Log.d("bla bla", "210");
 								checkCount=0;
 								finish();
 							}
 						});
 
-				alertDialog.show();
-				}
-				else
-				{
-				Log.d("Line: ", "202");
-				GetUserName();
-				Log.d("Line: ", "204");
-				SaveToFile();
-				Log.d("Line: ", "206");
-				}
-
+				alertDialog.show();		
 			} else {
+				Log.d("bla bla", "218 else");
 				final TextView changeScore = (TextView) findViewById(R.id.textViewScore);
+				Log.d("bla bla", "after final 220");
 				changeScore.setText("Score: "+(++score));
+				Log.d("bla bla", "changeScore 222");
 				if (checkCount == randomNumbers.size() - 1) {
+					Log.d("bla bla", "222");
 					Toast.makeText(MemoryTiles.this,
 							"Congradulations! Next Level!!!",
 							Toast.LENGTH_SHORT).show();
@@ -221,10 +237,17 @@ public class MemoryTiles extends ActionBarActivity {
 			}
 		}
 		checkCount++;
+		
+		}
+		
+		catch(Exception e){
+			Log.d("Error me: ", e.toString());
+		}
 		return false;
 	}	
 
 	private void SaveToFile() {
+		
 		String value="";
 		for(int i=0; i<MainScreen.highScoreArray.length;i++){
 		    value+=MainScreen.highScoreArray[i]+";"+MainScreen.highScoreArray[i+1]+";";
@@ -246,120 +269,150 @@ public class MemoryTiles extends ActionBarActivity {
 	{
 		Log.d("---------", "clicked 1");
 		CheckUserInput(0);
-		buttonSound.start();
-		
+		if(soundStatus=="1"){
+			buttonSound.start();
+		}
 	}
 	public void imageViewCol2Clicked(View v)
 	{
 		Log.d("---------", "clicked 2");
 		CheckUserInput(1);
-		buttonSound.start();
+		if(soundStatus=="1"){
+			buttonSound.start();
+		}
 	}
 	public void imageViewCol3Clicked(View v)
 	{
 		Log.d("---------", "clicked 3");
 		CheckUserInput(2);
-		buttonSound.start();
+		if(soundStatus=="1"){
+			buttonSound.start();
+		}
 	}
 	public void imageViewCol4Clicked(View v)
 	{
 		Log.d("---------", "clicked 4");
 		CheckUserInput(3);
-		buttonSound.start();
+		if(soundStatus=="1"){
+			buttonSound.start();
+		}
 	}
 	public void imageViewCol5Clicked(View v)
 	{
 		Log.d("---------", "clicked 5");
 		CheckUserInput(4);
-		buttonSound.start();
+		if(soundStatus=="1"){
+			buttonSound.start();
+		}
 	}
 	public void imageViewCol6Clicked(View v)
 	{
 		Log.d("---------", "clicked 6");
 		CheckUserInput(5);
-		buttonSound.start();
+		if(soundStatus=="1"){
+			buttonSound.start();
+		}
 	}
 	public void imageViewCol7Clicked(View v)
 	{
 		Log.d("---------", "clicked 7");
 		CheckUserInput(6);
-		buttonSound.start();
+		if(soundStatus=="1"){
+			buttonSound.start();
+		}
 	}
 	public void imageViewCol8Clicked(View v)
 	{
 		Log.d("---------", "clicked 8");
 		CheckUserInput(7);
-		buttonSound.start();
+		if(soundStatus=="1"){
+			buttonSound.start();
+		}
 	}
 	public void imageViewCol9Clicked(View v)
 	{
 		Log.d("---------", "clicked 9");
 		CheckUserInput(8);
-		buttonSound.start();
+		if(soundStatus=="1"){
+			buttonSound.start();
+		}
 	}
 	public void imageViewCol10Clicked(View v)
 	{
 		Log.d("---------", "clicked 10");
 		CheckUserInput(9);
-		buttonSound.start();
+		if(soundStatus=="1"){
+			buttonSound.start();
+		}
 	}
 	public void imageViewCol11Clicked(View v)
 	{
 		Log.d("---------", "clicked 11");
 		CheckUserInput(10);
-		buttonSound.start();
+		if(soundStatus=="1"){
+			buttonSound.start();
+		}
 	}
 	public void imageViewCol12Clicked(View v)
 	{
 		Log.d("---------", "clicked 12");
 		CheckUserInput(11);
-		buttonSound.start();
+		if(soundStatus=="1"){
+			buttonSound.start();
+		}
 	}
 	public void imageViewCol13Clicked(View v)
 	{
 		Log.d("---------", "clicked 13");
 		CheckUserInput(12);
-		buttonSound.start();
+		if(soundStatus=="1"){
+			buttonSound.start();
+		}
 	}
 	public void imageViewCol14Clicked(View v)
 	{
 		Log.d("---------", "clicked 14");
 		CheckUserInput(13);
-		buttonSound.start();
+		if(soundStatus=="1"){
+			buttonSound.start();
+		}
 	}
 	public void imageViewCol15Clicked(View v)
 	{
 		Log.d("---------", "clicked 15");
 		CheckUserInput(14);
-		buttonSound.start();
+		if(soundStatus=="1"){
+			buttonSound.start();
+		}
 	}
 	public void imageViewCol16Clicked(View v)
 	{
 		Log.d("---------", "clicked 16");
 		CheckUserInput(15);
-		buttonSound.start();
+		if(soundStatus=="1"){
+			buttonSound.start();
+		}
 	}	
 	
 	private void GetUserName() {
+		
 		AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
-		alert.setTitle("High Score");
+		alert.setTitle("Hi Gamer!!!");
 		alert.setMessage("Please give your Name:");
-
 		
 		final EditText input = new EditText(this);
 		alert.setView(input);
 
 		alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-		public void onClick(DialogInterface dialog, int whichButton) {
-		  Editable name = input.getText();
-		  MainScreen.highScoreArray[MainScreen.highScoreArray.length]=String.valueOf(name);
-		  MainScreen.highScoreArray[MainScreen.highScoreArray.length+1]=String.valueOf(score);
-		 
-		  }
-		});
-		alert.show();
-		
+			
+			public void onClick(DialogInterface dialog, int whichButton) {
+			  String name = input.getText().toString();
+			  MainScreen.highScoreArray[MainScreen.highScoreArray.length]=String.valueOf(name);
+			 
+			  }
+			});
+		alert.show();		
 	}
 	
 	public static void SortArray(){
@@ -371,13 +424,13 @@ public class MemoryTiles extends ActionBarActivity {
 	     int[] arrayTempInteger=new int[MainScreen.highScoreArray.length/2];
 	     String[] arrayTempString=new String[MainScreen.highScoreArray.length/2];
 	     int k=0;
+	     
 	     for(int i=0; i<MainScreen.highScoreArray.length; i++){
 	    	 arrayTempString[k]=MainScreen.highScoreArray[i];
 	    	 arrayTempInteger[k]=Integer.valueOf(MainScreen.highScoreArray[i+1]);
 	    	 i++;	    
 	    	 k++;
-	     }
-	     
+	     }	     
 	     
 	     for(int i=0; i < arrayTempInteger.length-1; i++){
 	    	 
@@ -395,6 +448,7 @@ public class MemoryTiles extends ActionBarActivity {
 	            }
 	        }
 	     k=0;
+	     
 	     for(int i=0; i<MainScreen.highScoreArray.length; i++){
 	    	 MainScreen.highScoreArray[i]=arrayTempString[k];
 	    	 MainScreen.highScoreArray[i+1]=String.valueOf(arrayTempInteger[k]);
@@ -402,4 +456,32 @@ public class MemoryTiles extends ActionBarActivity {
 	    	 k++;
 	     }
 	}
+	
+	public void SetImageViews(){
+		
+		 tilesImageView[0]=(ImageView)findViewById(R.id.imageViewCol1); 
+		 tilesImageView[1]=(ImageView)findViewById(R.id.imageViewCol2); 
+		 tilesImageView[2]=(ImageView)findViewById(R.id.imageViewCol3); 
+		 tilesImageView[3]=(ImageView)findViewById(R.id.imageViewCol4); 
+		 tilesImageView[4]=(ImageView)findViewById(R.id.imageViewCol5); 
+		 tilesImageView[5]=(ImageView)findViewById(R.id.imageViewCol6); 
+		 tilesImageView[6]=(ImageView)findViewById(R.id.imageViewCol7); 
+		 tilesImageView[7]=(ImageView)findViewById(R.id.imageViewCol8); 
+		 tilesImageView[8]=(ImageView)findViewById(R.id.imageViewCol9); 
+		 tilesImageView[9]=(ImageView)findViewById(R.id.imageViewCol10); 
+		 tilesImageView[10]=(ImageView)findViewById(R.id.imageViewCol11); 
+		 tilesImageView[11]=(ImageView)findViewById(R.id.imageViewCol12);
+		 tilesImageView[12]=(ImageView)findViewById(R.id.imageViewCol13); 
+		 tilesImageView[13]=(ImageView)findViewById(R.id.imageViewCol14); 
+		 tilesImageView[14]=(ImageView)findViewById(R.id.imageViewCol15); 
+		 tilesImageView[15]=(ImageView)findViewById(R.id.imageViewCol16); 	  		
+	}
+	
+	public void EnableDisableImageViews(boolean status){
+		 
+		for(int i=0;i<16;i++){
+			tilesImageView[i].setEnabled(status);
+		}			  
+	}  		
 }
+

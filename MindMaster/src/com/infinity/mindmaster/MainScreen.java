@@ -70,7 +70,7 @@ public class MainScreen extends Activity {
 				Log.d("chwtlkme ", settingsArray[0]+settingsArray[1]);
 			}
 			if(fileAccess.FileRead("highscore")==null){
-				highScoreArray =("Chintaka;10;Disni;20;Anuja;30;Rasanjana;40;").split(";");
+				highScoreArray =("Chintaka;10;Disni;20;Anuja;30;Rasanjana De Alwis;1000;").split(";");
 				MemoryTiles.SortArray();
 								
 			}

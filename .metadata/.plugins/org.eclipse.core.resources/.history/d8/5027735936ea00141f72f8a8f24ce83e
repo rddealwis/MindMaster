@@ -1,0 +1,448 @@
+package com.infinity.mindmaster;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Random;
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.media.MediaPlayer;
+import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Handler;
+import android.support.v7.app.ActionBarActivity;
+import android.text.Editable;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.InputBinding;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.mindmaster.R;
+
+//import android.app.AlertDialog.Builder;
+
+public class MemoryTiles extends ActionBarActivity {
+
+	public ArrayList randomNumbers = new ArrayList();
+	public ArrayList userInput = new ArrayList();
+	public int gameLevel = 4;
+	public int checkCount = 0;
+	public boolean test = false;
+	public boolean correct = true;
+	public int score=0;
+	public int level=0;
+	public int timeGap=0;
+	GridView gridview = null;
+	Handler handlerClick = new Handler();
+	//final ImageView[] testImageViewClick = new ImageView[1];
+	MediaPlayer buttonSound = null;	
+	FileAccess fileAccess=new FileAccess();
+	String soundStatus;
+	ImageView[] tilesImageView = new ImageView[16];
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_memory_tiles);
+		gridview = (GridView) findViewById(R.id.gridView_Tile);
+		soundStatus=MainScreen.settingsArray[0];
+		if(soundStatus=="1"){
+		buttonSound = MediaPlayer.create(MemoryTiles.this, R.raw.button_click);
+		}
+		SetTimeGapValue();
+		SetImageViews();
+		//GetUserName();
+	}
+	
+	private void SetTimeGapValue() {
+		
+		switch(Integer.valueOf(MainScreen.settingsArray[1])){
+			case 1: timeGap=1500;
+				break;
+			case 2:timeGap=1000;
+				break;
+			case 3:timeGap=500;
+			break;		
+		}		
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.memory_tiles, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	public void startPlay(View v)
+	{		
+		Button btn = (Button) findViewById(R.id.btnStart);
+		btn.setEnabled(false);
+		playGame();
+	}
+	
+	public void playGame(){
+		
+		final TextView levelTxt = (TextView) findViewById(R.id.TextViewLevelNo);
+		levelTxt.setText("Level: "+(++level));
+		GenerateRandomValues(gameLevel++);
+		EnableDisableImageViews(false);
+		TilesColorChange();
+		EnableDisableImageViews(true);
+	}
+
+	public void GenerateRandomValues(int amount) {
+
+		// amount=4;
+		try{
+		randomNumbers.removeAll(randomNumbers);
+		checkCount=0;
+		Random rand = new Random();
+		for (int generateCount = 0; generateCount < amount; generateCount++) {
+
+			randomNumbers.add(rand.nextInt((15 - 0) + 1) + 0);
+		}}
+		catch(Exception e){
+			Log.d("Error: ", e.toString());
+		}
+	}
+
+	public void TilesColorChange() {
+		
+		try{
+			int value = 0;		
+			int time = 1;		
+		
+			for (int count = 0; count < randomNumbers.size(); count++)
+			{
+				value = (Integer) randomNumbers.get(count);	
+				Log.d("Value: ",Integer.toString(value));
+				colorChange(value, time);
+				time=time+2;
+			}
+		} catch(Exception e){
+				Log.d("Error: ", e.toString());
+			}
+	}
+	
+	public void colorChange(int value, int time){
+		
+		try{
+		    final ImageView[] testImageView = new ImageView[1];
+		    
+		    switch (value+1){
+		      case 1: testImageView[0]=(ImageView)findViewById(R.id.imageViewCol1); break;
+		      case 2: testImageView[0]=(ImageView)findViewById(R.id.imageViewCol2); break;
+		      case 3: testImageView[0]=(ImageView)findViewById(R.id.imageViewCol3); break;
+		      case 4: testImageView[0]=(ImageView)findViewById(R.id.imageViewCol4); break;
+		      case 5: testImageView[0]=(ImageView)findViewById(R.id.imageViewCol5); break;
+		      case 6: testImageView[0]=(ImageView)findViewById(R.id.imageViewCol6); break;
+		      case 7: testImageView[0]=(ImageView)findViewById(R.id.imageViewCol7); break;
+		      case 8: testImageView[0]=(ImageView)findViewById(R.id.imageViewCol8); break;
+		      case 9: testImageView[0]=(ImageView)findViewById(R.id.imageViewCol9); break;
+		      case 10: testImageView[0]=(ImageView)findViewById(R.id.imageViewCol10); break;
+		      case 11: testImageView[0]=(ImageView)findViewById(R.id.imageViewCol11); break;
+		      case 12: testImageView[0]=(ImageView)findViewById(R.id.imageViewCol12); break;
+		      case 13: testImageView[0]=(ImageView)findViewById(R.id.imageViewCol13); break;
+		      case 14: testImageView[0]=(ImageView)findViewById(R.id.imageViewCol14); break;
+		      case 15: testImageView[0]=(ImageView)findViewById(R.id.imageViewCol15); break;
+		      case 16: testImageView[0]=(ImageView)findViewById(R.id.imageViewCol16); break;	      
+	    }  
+	  
+	     Handler handler = new Handler(); 	    
+	       
+	       handler.postDelayed(new Runnable() { 
+	             public void run() { 
+	            	   testImageView[0].setImageResource(R.drawable.img_clicked_tile);
+	             } 
+	        }, timeGap*(time)); 
+	       
+	       
+	        handler.postDelayed(new Runnable() { 
+	             public void run() { 
+	               testImageView[0].setImageResource(R.drawable.img_tile);
+	             } 
+	        }, timeGap*(time+1)); }
+			catch(Exception e){
+				Log.d("Error: ", e.toString());
+			}
+	  }	
+
+	private boolean CheckUserInput(int position) {
+		try
+		{
+			Log.d("bla bla", "hi hi hi");
+		
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+		
+		if (checkCount < randomNumbers.size()) {
+			Log.d("bla bla", "199");
+			if (position != (Integer) randomNumbers.get(checkCount)) {
+				Log.d("bla bla", "201");
+				alertDialog.setTitle("Game Over");				
+				//MainScreen.highScoreArray[MainScreen.highScoreArray.length]=String.valueOf(score);
+				alertDialog.setMessage("Sorry, You got it wrong! Try Again! Your score is "+score+"!!!");
+				alertDialog.setIcon(R.drawable.logo);
+				alertDialog.setPositiveButton("OK",
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog,
+									int which) {
+								Log.d("bla bla", "210");
+								checkCount=0;
+								finish();
+							}
+						});
+
+				alertDialog.show();		
+			} else {
+				Log.d("bla bla", "218 else");
+				final TextView changeScore = (TextView) findViewById(R.id.textViewScore);
+				Log.d("bla bla", "after final 220");
+				changeScore.setText("Score: "+(++score));
+				if (checkCount == randomNumbers.size() - 1) {
+					Log.d("bla bla", "222");
+					Toast.makeText(MemoryTiles.this,
+							"Congradulations! Next Level!!!",
+							Toast.LENGTH_SHORT).show();
+
+					return true;
+										
+				}
+			}
+		}
+		checkCount++;
+		
+		}
+		
+		catch(Exception e){
+			Log.d("Error me: ", e.toString());
+		}
+		return false;
+	}	
+
+	private void SaveToFile() {
+		String value="";
+		for(int i=0; i<MainScreen.highScoreArray.length;i++){
+		    value+=MainScreen.highScoreArray[i]+";"+MainScreen.highScoreArray[i+1]+";";
+		    i++;
+		}
+		    try {
+				fileAccess.FileWrite("highscore", value);
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		    super.onBackPressed();
+		
+	
+	}
+
+	public void imageViewCol1Clicked(View v)
+	{
+		Log.d("---------", "clicked 1");
+		CheckUserInput(0);
+		buttonSound.start();
+		
+	}
+	public void imageViewCol2Clicked(View v)
+	{
+		Log.d("---------", "clicked 2");
+		CheckUserInput(1);
+		buttonSound.start();
+	}
+	public void imageViewCol3Clicked(View v)
+	{
+		Log.d("---------", "clicked 3");
+		CheckUserInput(2);
+		buttonSound.start();
+	}
+	public void imageViewCol4Clicked(View v)
+	{
+		Log.d("---------", "clicked 4");
+		CheckUserInput(3);
+		buttonSound.start();
+	}
+	public void imageViewCol5Clicked(View v)
+	{
+		Log.d("---------", "clicked 5");
+		CheckUserInput(4);
+		buttonSound.start();
+	}
+	public void imageViewCol6Clicked(View v)
+	{
+		Log.d("---------", "clicked 6");
+		CheckUserInput(5);
+		buttonSound.start();
+	}
+	public void imageViewCol7Clicked(View v)
+	{
+		Log.d("---------", "clicked 7");
+		CheckUserInput(6);
+		buttonSound.start();
+	}
+	public void imageViewCol8Clicked(View v)
+	{
+		Log.d("---------", "clicked 8");
+		CheckUserInput(7);
+		buttonSound.start();
+	}
+	public void imageViewCol9Clicked(View v)
+	{
+		Log.d("---------", "clicked 9");
+		CheckUserInput(8);
+		buttonSound.start();
+	}
+	public void imageViewCol10Clicked(View v)
+	{
+		Log.d("---------", "clicked 10");
+		CheckUserInput(9);
+		buttonSound.start();
+	}
+	public void imageViewCol11Clicked(View v)
+	{
+		Log.d("---------", "clicked 11");
+		CheckUserInput(10);
+		buttonSound.start();
+	}
+	public void imageViewCol12Clicked(View v)
+	{
+		Log.d("---------", "clicked 12");
+		CheckUserInput(11);
+		buttonSound.start();
+	}
+	public void imageViewCol13Clicked(View v)
+	{
+		Log.d("---------", "clicked 13");
+		CheckUserInput(12);
+		buttonSound.start();
+	}
+	public void imageViewCol14Clicked(View v)
+	{
+		Log.d("---------", "clicked 14");
+		CheckUserInput(13);
+		buttonSound.start();
+	}
+	public void imageViewCol15Clicked(View v)
+	{
+		Log.d("---------", "clicked 15");
+		CheckUserInput(14);
+		buttonSound.start();
+	}
+	public void imageViewCol16Clicked(View v)
+	{
+		Log.d("---------", "clicked 16");
+		CheckUserInput(15);
+		buttonSound.start();
+	}	
+	
+	private void GetUserName() {
+		AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+		alert.setTitle("Hi Gamer!!!");
+		alert.setMessage("Please give your Name:");
+
+		
+		final EditText input = new EditText(this);
+		alert.setView(input);
+
+		alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+		public void onClick(DialogInterface dialog, int whichButton) {
+		  Editable name = input.getText();
+		  MainScreen.highScoreArray[MainScreen.highScoreArray.length]=String.valueOf(name);
+		 
+		  }
+		});
+		alert.show();
+		
+	}
+	
+	public static void SortArray(){
+		
+		 int j;
+	     boolean flag = true;   // set flag to true to begin first pass
+	     int temp;   //holding variable
+	     String temp2;
+	     int[] arrayTempInteger=new int[MainScreen.highScoreArray.length/2];
+	     String[] arrayTempString=new String[MainScreen.highScoreArray.length/2];
+	     int k=0;
+	     for(int i=0; i<MainScreen.highScoreArray.length; i++){
+	    	 arrayTempString[k]=MainScreen.highScoreArray[i];
+	    	 arrayTempInteger[k]=Integer.valueOf(MainScreen.highScoreArray[i+1]);
+	    	 i++;	    
+	    	 k++;
+	     }
+	     
+	     
+	     for(int i=0; i < arrayTempInteger.length-1; i++){
+	    	 
+	            for(int j1=1; j1 < arrayTempInteger.length-i; j1++){
+	                if(arrayTempInteger[j1-1] < arrayTempInteger[j1]){
+	                    temp=arrayTempInteger[j1-1];
+	                    temp2=arrayTempString[j1-1];
+	                    
+	                    arrayTempInteger[j1-1] = arrayTempInteger[j1];
+	                    arrayTempString[j1-1]=arrayTempString[j1];
+	                    
+	                    arrayTempInteger[j1] = temp;
+	                    arrayTempString[j1]=temp2;
+	                }
+	            }
+	        }
+	     k=0;
+	     for(int i=0; i<MainScreen.highScoreArray.length; i++){
+	    	 MainScreen.highScoreArray[i]=arrayTempString[k];
+	    	 MainScreen.highScoreArray[i+1]=String.valueOf(arrayTempInteger[k]);
+	    	 i++;	    
+	    	 k++;
+	     }
+	}
+	public void SetImageViews(){
+		      tilesImageView[0]=(ImageView)findViewById(R.id.imageViewCol1); 
+		      tilesImageView[1]=(ImageView)findViewById(R.id.imageViewCol2); 
+		      tilesImageView[2]=(ImageView)findViewById(R.id.imageViewCol3); 
+		      tilesImageView[3]=(ImageView)findViewById(R.id.imageViewCol4); 
+		      tilesImageView[4]=(ImageView)findViewById(R.id.imageViewCol5); 
+		      tilesImageView[5]=(ImageView)findViewById(R.id.imageViewCol6); 
+		      tilesImageView[6]=(ImageView)findViewById(R.id.imageViewCol7); 
+		      tilesImageView[7]=(ImageView)findViewById(R.id.imageViewCol8); 
+		      tilesImageView[8]=(ImageView)findViewById(R.id.imageViewCol9); 
+		      tilesImageView[9]=(ImageView)findViewById(R.id.imageViewCol10); 
+		      tilesImageView[10]=(ImageView)findViewById(R.id.imageViewCol11); 
+		      tilesImageView[11]=(ImageView)findViewById(R.id.imageViewCol12);
+		      tilesImageView[12]=(ImageView)findViewById(R.id.imageViewCol13); 
+		      tilesImageView[13]=(ImageView)findViewById(R.id.imageViewCol14); 
+		      tilesImageView[14]=(ImageView)findViewById(R.id.imageViewCol15); 
+		      tilesImageView[15]=(ImageView)findViewById(R.id.imageViewCol16); 	  
+		
+	}
+	public void EnableDisableImageViews(boolean status){
+		 
+		for(int i=0;i<16;i++){
+		tilesImageView[i].setEnabled(status);
+		}
+			  
+	    }  
+		
+	}
+
