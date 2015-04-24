@@ -109,6 +109,7 @@ public class MemoryTiles extends ActionBarActivity {
 		Button btn = (Button) findViewById(R.id.btnStart);
 		Log.d("startPlay", "disable");
 		btn.setClickable(false);
+		btn.setVisibility(btn.INVISIBLE);
 		playGame();
 		Log.d("startPlay", "disable");
 		//btn.setClickable(true);
@@ -122,7 +123,7 @@ public class MemoryTiles extends ActionBarActivity {
 		EnableDisableImageViews(false);
 		TilesColorChange();
 		Log.d("Rasanjana", "de");
-		//EnableDisableImageViews(true);
+		/*EnableDisableImageViews(true);*/
 	}
 
 	public void GenerateRandomValues(int amount) {
@@ -152,7 +153,7 @@ public class MemoryTiles extends ActionBarActivity {
 			{
 				value = (Integer) randomNumbers.get(count);	
 				Log.d("Value: ",Integer.toString(value));
-				colorChange(value, time);
+				colorChange(value, time, count == randomNumbers.size()-1);
 				time=time+2;
 			}
 		} catch(Exception e){
@@ -160,12 +161,12 @@ public class MemoryTiles extends ActionBarActivity {
 			}
 	}
 	
-	public void colorChange(int value, int time){
+	public void colorChange(int value, int time, boolean last){
 		
 		try{
 			
 		    final ImageView[] testImageView = new ImageView[1];
-		    
+		    final boolean finalLast=last;
 		    switch (value+1){
 		      case 1: testImageView[0]=(ImageView)findViewById(R.id.imageViewCol1); break;
 		      case 2: testImageView[0]=(ImageView)findViewById(R.id.imageViewCol2); break;
@@ -198,6 +199,9 @@ public class MemoryTiles extends ActionBarActivity {
 	             public void run() { 
 	               testImageView[0].setImageResource(R.drawable.img_tile);
 	               //if this is the last square setEnable true
+	               if(finalLast){
+	            	   EnableDisableImageViews(true);
+	               }
 	             } 
 	        }, timeGap*(time+1)); }
 			catch(Exception e){
@@ -233,6 +237,7 @@ public class MemoryTiles extends ActionBarActivity {
 					Toast.makeText(MemoryTiles.this,
 							"Congradulations! Next Level!!!",
 							Toast.LENGTH_SHORT).show();
+					
 
 					return true;
 										
@@ -293,10 +298,13 @@ public class MemoryTiles extends ActionBarActivity {
 	{
 		Log.d("---------", "clicked 1");	
 		ChangeColorOnUserClick(v);
-		CheckUserInput(0);
+		//CheckUserInput(0);
 		
 		if(soundStatus=="1"){
 			buttonSound.start();
+		}
+		if(CheckUserInput(0)){
+			playGame();
 		}
 	}
 	
@@ -304,10 +312,14 @@ public class MemoryTiles extends ActionBarActivity {
 	{
 		Log.d("---------", "clicked 2");
 		ChangeColorOnUserClick(v);
-		CheckUserInput(1);
+		
 		
 		if(soundStatus=="1"){
 			buttonSound.start();
+		}
+		
+		if(CheckUserInput(1)){
+			playGame();
 		}
 	}
 	
@@ -315,10 +327,13 @@ public class MemoryTiles extends ActionBarActivity {
 	{
 		Log.d("---------", "clicked 3");
 		ChangeColorOnUserClick(v);
-		CheckUserInput(2);
+		//CheckUserInput(2);
 		
 		if(soundStatus=="1"){
 			buttonSound.start();
+		}
+		if(CheckUserInput(2)){
+			playGame();
 		}
 	}
 	
@@ -326,10 +341,13 @@ public class MemoryTiles extends ActionBarActivity {
 	{
 		Log.d("---------", "clicked 4");
 		ChangeColorOnUserClick(v);
-		CheckUserInput(3);
+		//CheckUserInput(3);
 		
 		if(soundStatus=="1"){
 			buttonSound.start();
+		}
+		if(CheckUserInput(3)){
+			playGame();
 		}
 	}
 	
@@ -337,10 +355,13 @@ public class MemoryTiles extends ActionBarActivity {
 	{
 		Log.d("---------", "clicked 5");
 		ChangeColorOnUserClick(v);
-		CheckUserInput(4);
+		//CheckUserInput(4);
 		
 		if(soundStatus=="1"){
 			buttonSound.start();
+		}
+		if(CheckUserInput(4)){
+			playGame();
 		}
 	}
 	
@@ -348,10 +369,13 @@ public class MemoryTiles extends ActionBarActivity {
 	{
 		Log.d("---------", "clicked 6");
 		ChangeColorOnUserClick(v);
-		CheckUserInput(5);
+		//CheckUserInput(5);
 		
 		if(soundStatus=="1"){
 			buttonSound.start();
+		}
+		if(CheckUserInput(5)){
+			playGame();
 		}
 	}
 	
@@ -359,10 +383,13 @@ public class MemoryTiles extends ActionBarActivity {
 	{
 		Log.d("---------", "clicked 7");
 		ChangeColorOnUserClick(v);
-		CheckUserInput(6);
+		//CheckUserInput(6);
 		
 		if(soundStatus=="1"){
 			buttonSound.start();
+		}
+		if(CheckUserInput(6)){
+			playGame();
 		}
 	}
 	
@@ -370,10 +397,13 @@ public class MemoryTiles extends ActionBarActivity {
 	{
 		Log.d("---------", "clicked 8");
 		ChangeColorOnUserClick(v);
-		CheckUserInput(7);
+		//CheckUserInput(7);
 		
 		if(soundStatus=="1"){
 			buttonSound.start();
+		}
+		if(CheckUserInput(7)){
+			playGame();
 		}
 	}
 	
@@ -381,10 +411,13 @@ public class MemoryTiles extends ActionBarActivity {
 	{
 		Log.d("---------", "clicked 9");
 		ChangeColorOnUserClick(v);
-		CheckUserInput(8);
+		//CheckUserInput(8);
 		
 		if(soundStatus=="1"){
 			buttonSound.start();
+		}
+		if(CheckUserInput(8)){
+			playGame();
 		}
 	}
 	
@@ -392,10 +425,13 @@ public class MemoryTiles extends ActionBarActivity {
 	{
 		Log.d("---------", "clicked 10");
 		ChangeColorOnUserClick(v);
-		CheckUserInput(9);
+		//CheckUserInput(9);
 		
 		if(soundStatus=="1"){
 			buttonSound.start();
+		}
+		if(CheckUserInput(9)){
+			playGame();
 		}
 	}
 	
@@ -403,10 +439,13 @@ public class MemoryTiles extends ActionBarActivity {
 	{
 		Log.d("---------", "clicked 11");
 		ChangeColorOnUserClick(v);
-		CheckUserInput(10);
+		//CheckUserInput(10);
 		
 		if(soundStatus=="1"){
 			buttonSound.start();
+		}
+		if(CheckUserInput(10)){
+			playGame();
 		}
 	}
 	
@@ -414,10 +453,13 @@ public class MemoryTiles extends ActionBarActivity {
 	{
 		Log.d("---------", "clicked 12");
 		ChangeColorOnUserClick(v);
-		CheckUserInput(11);
+		//CheckUserInput(11);
 		
 		if(soundStatus=="1"){
 			buttonSound.start();
+		}
+		if(CheckUserInput(11)){
+			playGame();
 		}
 	}
 	
@@ -425,10 +467,13 @@ public class MemoryTiles extends ActionBarActivity {
 	{
 		Log.d("---------", "clicked 13");
 		ChangeColorOnUserClick(v);
-		CheckUserInput(12);
+		//CheckUserInput(12);
 		
 		if(soundStatus=="1"){
 			buttonSound.start();
+		}
+		if(CheckUserInput(12)){
+			playGame();
 		}
 	}
 	
@@ -436,10 +481,13 @@ public class MemoryTiles extends ActionBarActivity {
 	{
 		Log.d("---------", "clicked 14");
 		ChangeColorOnUserClick(v);
-		CheckUserInput(13);
+		//CheckUserInput(13);
 		
 		if(soundStatus=="1"){
 			buttonSound.start();
+		}
+		if(CheckUserInput(13)){
+			playGame();
 		}
 	}
 	
@@ -447,10 +495,13 @@ public class MemoryTiles extends ActionBarActivity {
 	{
 		Log.d("---------", "clicked 15");
 		ChangeColorOnUserClick(v);
-		CheckUserInput(14);
+		//CheckUserInput(14);
 		
 		if(soundStatus=="1"){
 			buttonSound.start();
+		}
+		if(CheckUserInput(14)){
+			playGame();
 		}
 	}
 	
@@ -458,10 +509,13 @@ public class MemoryTiles extends ActionBarActivity {
 	{
 		Log.d("---------", "clicked 16");
 		ChangeColorOnUserClick(v);
-		CheckUserInput(15);
+		//CheckUserInput(15);
 		
 		if(soundStatus=="1"){
 			buttonSound.start();
+		}
+		if(CheckUserInput(15)){
+			playGame();
 		}
 	}	
 	
