@@ -1,16 +1,13 @@
 package com.infinity.mindmaster;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Random;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnShowListener;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
@@ -18,19 +15,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.InputBinding;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.mindmaster.R;
-
-//import android.app.AlertDialog.Builder;
 
 public class MemoryTiles extends ActionBarActivity {
 
@@ -45,7 +36,6 @@ public class MemoryTiles extends ActionBarActivity {
 	public int timeGap=0;
 	GridView gridview = null;
 	Handler handlerClick = new Handler();
-	//final ImageView[] testImageViewClick = new ImageView[1];
 	MediaPlayer buttonSound = null;
 	MediaPlayer highScoreSound = null;
 	FileAccess fileAccess=new FileAccess();
@@ -56,8 +46,7 @@ public class MemoryTiles extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
-		super.onCreate(savedInstanceState);		
-		//GetUserName();
+		super.onCreate(savedInstanceState);	
 		setContentView(R.layout.activity_memory_tiles);
 		gridview = (GridView) findViewById(R.id.gridView_Tile);
 		soundStatus=MainScreen.settingsArray[0];
@@ -68,7 +57,6 @@ public class MemoryTiles extends ActionBarActivity {
 		}
 		
 		Button btn = (Button) findViewById(R.id.btnStart);
-		Log.d("startPlay", "disable");
 		btn.setClickable(true);
 		
 		SetTimeGapValue();
@@ -110,12 +98,9 @@ public class MemoryTiles extends ActionBarActivity {
 	public void startPlay(View v)
 	{		
 		Button btn = (Button) findViewById(R.id.btnStart);
-		Log.d("startPlay", "disable");
 		btn.setClickable(false);
 		btn.setVisibility(btn.INVISIBLE);
 		playGame();
-		Log.d("startPlay", "disable");
-		//btn.setClickable(true);
 	}
 	
 	public void playGame(){
@@ -125,8 +110,6 @@ public class MemoryTiles extends ActionBarActivity {
 		GenerateRandomValues(gameLevel++);
 		EnableDisableImageViews(false);
 		TilesColorChange();
-		Log.d("Rasanjana", "de");
-		/*EnableDisableImageViews(true);*/
 	}
 
 	public void GenerateRandomValues(int amount) {
@@ -155,7 +138,6 @@ public class MemoryTiles extends ActionBarActivity {
 			for (int count = 0; count < randomNumbers.size(); count++)
 			{
 				value = (Integer) randomNumbers.get(count);	
-				Log.d("Value: ",Integer.toString(value));
 				colorChange(value, time, count == randomNumbers.size()-1);
 				time=time+2;
 			}
@@ -260,25 +242,6 @@ public class MemoryTiles extends ActionBarActivity {
 		return false;
 	}	
 
-	private void SaveToFile() {
-		
-		String value="";
-		for(int i=0; i<MainScreen.highScoreArray.length;i++){
-		    value+=MainScreen.highScoreArray[i]+";"+MainScreen.highScoreArray[i+1]+";";
-		    i++;
-		}
-		
-		try {
-			
-			fileAccess.FileWrite("highscore", value);
-			
-		} catch (IOException e) {
-				
-			e.printStackTrace();
-		}
-		super.onBackPressed();
-	}
-
 	public void ChangeColorOnUserClick(View v){
 		
 		try{
@@ -308,10 +271,8 @@ public class MemoryTiles extends ActionBarActivity {
 	
 	public void imageViewCol1Clicked(View v)
 	{
-		Log.d("---------", "clicked 1");	
-		ChangeColorOnUserClick(v);
-		//CheckUserInput(0);
 		
+		ChangeColorOnUserClick(v);		
 		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
@@ -321,15 +282,11 @@ public class MemoryTiles extends ActionBarActivity {
 	}
 	
 	public void imageViewCol2Clicked(View v)
-	{
-		Log.d("---------", "clicked 2");
-		ChangeColorOnUserClick(v);
-		
-		
+	{		
+		ChangeColorOnUserClick(v);	
 		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
-		
 		if(CheckUserInput(1)){
 			playGame();
 		}
@@ -337,10 +294,7 @@ public class MemoryTiles extends ActionBarActivity {
 	
 	public void imageViewCol3Clicked(View v)
 	{
-		Log.d("---------", "clicked 3");
 		ChangeColorOnUserClick(v);
-		//CheckUserInput(2);
-		
 		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
@@ -351,10 +305,7 @@ public class MemoryTiles extends ActionBarActivity {
 	
 	public void imageViewCol4Clicked(View v)
 	{
-		Log.d("---------", "clicked 4");
 		ChangeColorOnUserClick(v);
-		//CheckUserInput(3);
-		
 		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
@@ -365,10 +316,7 @@ public class MemoryTiles extends ActionBarActivity {
 	
 	public void imageViewCol5Clicked(View v)
 	{
-		Log.d("---------", "clicked 5");
 		ChangeColorOnUserClick(v);
-		//CheckUserInput(4);
-		
 		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
@@ -379,10 +327,7 @@ public class MemoryTiles extends ActionBarActivity {
 	
 	public void imageViewCol6Clicked(View v)
 	{
-		Log.d("---------", "clicked 6");
 		ChangeColorOnUserClick(v);
-		//CheckUserInput(5);
-		
 		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
@@ -393,10 +338,7 @@ public class MemoryTiles extends ActionBarActivity {
 	
 	public void imageViewCol7Clicked(View v)
 	{
-		Log.d("---------", "clicked 7");
 		ChangeColorOnUserClick(v);
-		//CheckUserInput(6);
-		
 		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
@@ -407,10 +349,7 @@ public class MemoryTiles extends ActionBarActivity {
 	
 	public void imageViewCol8Clicked(View v)
 	{
-		Log.d("---------", "clicked 8");
 		ChangeColorOnUserClick(v);
-		//CheckUserInput(7);
-		
 		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
@@ -421,10 +360,7 @@ public class MemoryTiles extends ActionBarActivity {
 	
 	public void imageViewCol9Clicked(View v)
 	{
-		Log.d("---------", "clicked 9");
 		ChangeColorOnUserClick(v);
-		//CheckUserInput(8);
-		
 		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
@@ -435,10 +371,7 @@ public class MemoryTiles extends ActionBarActivity {
 	
 	public void imageViewCol10Clicked(View v)
 	{
-		Log.d("---------", "clicked 10");
 		ChangeColorOnUserClick(v);
-		//CheckUserInput(9);
-		
 		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
@@ -449,10 +382,7 @@ public class MemoryTiles extends ActionBarActivity {
 	
 	public void imageViewCol11Clicked(View v)
 	{
-		Log.d("---------", "clicked 11");
 		ChangeColorOnUserClick(v);
-		//CheckUserInput(10);
-		
 		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
@@ -463,10 +393,7 @@ public class MemoryTiles extends ActionBarActivity {
 	
 	public void imageViewCol12Clicked(View v)
 	{
-		Log.d("---------", "clicked 12");
 		ChangeColorOnUserClick(v);
-		//CheckUserInput(11);
-		
 		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
@@ -477,10 +404,7 @@ public class MemoryTiles extends ActionBarActivity {
 	
 	public void imageViewCol13Clicked(View v)
 	{
-		Log.d("---------", "clicked 13");
 		ChangeColorOnUserClick(v);
-		//CheckUserInput(12);
-		
 		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
@@ -491,10 +415,7 @@ public class MemoryTiles extends ActionBarActivity {
 	
 	public void imageViewCol14Clicked(View v)
 	{
-		Log.d("---------", "clicked 14");
 		ChangeColorOnUserClick(v);
-		//CheckUserInput(13);
-		
 		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
@@ -505,10 +426,7 @@ public class MemoryTiles extends ActionBarActivity {
 	
 	public void imageViewCol15Clicked(View v)
 	{
-		Log.d("---------", "clicked 15");
 		ChangeColorOnUserClick(v);
-		//CheckUserInput(14);
-		
 		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
@@ -519,10 +437,7 @@ public class MemoryTiles extends ActionBarActivity {
 	
 	public void imageViewCol16Clicked(View v)
 	{
-		Log.d("---------", "clicked 16");
 		ChangeColorOnUserClick(v);
-		//CheckUserInput(15);
-		
 		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
@@ -574,14 +489,12 @@ public class MemoryTiles extends ActionBarActivity {
 		
 		String value="";
 
-		Log.d("MainScreen.highScoreArray.length560", String.valueOf(MainScreen.highScoreArray.length));
 		for(int i=0; i<MainScreen.highScoreArray.length;i++){
 	    value+=MainScreen.highScoreArray[i]+";"+MainScreen.highScoreArray[i+1]+";";
 	    i++;
 		}
 	    try {
 			fileAccess.FileWrite("highscore", value);
-			Log.d("chwtlk valeu: ", value);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -590,8 +503,7 @@ public class MemoryTiles extends ActionBarActivity {
 	
 	public static void SortArray(){
 		
-		 int j;
-	     boolean flag = true; 
+		 
 	     int temp;   
 	     String temp2;
 	     int[] arrayTempInteger=new int[MainScreen.highScoreArray.length/2];
@@ -608,16 +520,16 @@ public class MemoryTiles extends ActionBarActivity {
 	     
 	     for(int i=0; i < arrayTempInteger.length-1; i++){
 	    	 
-	            for(int j1=1; j1 < arrayTempInteger.length-i; j1++){
-	                if(arrayTempInteger[j1-1] < arrayTempInteger[j1]){
-	                    temp=arrayTempInteger[j1-1];
-	                    temp2=arrayTempString[j1-1];
+	            for(int j=1; j < arrayTempInteger.length-i; j++){
+	                if(arrayTempInteger[j-1] < arrayTempInteger[j]){
+	                    temp=arrayTempInteger[j-1];
+	                    temp2=arrayTempString[j-1];
 	                    
-	                    arrayTempInteger[j1-1] = arrayTempInteger[j1];
-	                    arrayTempString[j1-1]=arrayTempString[j1];
+	                    arrayTempInteger[j-1] = arrayTempInteger[j];
+	                    arrayTempString[j-1]=arrayTempString[j];
 	                    
-	                    arrayTempInteger[j1] = temp;
-	                    arrayTempString[j1]=temp2;
+	                    arrayTempInteger[j] = temp;
+	                    arrayTempString[j]=temp2;
 	                }
 	            }
 	        }
@@ -661,20 +573,9 @@ public class MemoryTiles extends ActionBarActivity {
 	
 	public void IncreaseArraySize() {
 		
-		   /*String[] temp = new String[MainScreen.highScoreArray.length + 1];
-
-		   for (int i = 0; i < MainScreen.highScoreArray.length; i++){
-			  temp[i] = MainScreen.highScoreArray[i];
-		   }
-		   
-		   MainScreen.highScoreArray = temp;*/
-		
 		String[] copyFrom  = MainScreen.highScoreArray;
 		String[] copyTo    = new String[MainScreen.highScoreArray.length + 1];
-
-		//System.out.println(Arrays.toString(copyFrom));
 		System.arraycopy(copyFrom, 0, copyTo, 0, copyFrom.length);
-		//System.out.println(Arrays.toString(copyTo));
 		MainScreen.highScoreArray=copyTo;
 	}			
 }

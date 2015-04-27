@@ -29,7 +29,6 @@ public class LoadTileIcons extends BaseAdapter {
 		return 0;
 	}
 
-	// create a new ImageView for each item referenced by the Adapter
 	public View getView(int position, View convertView, ViewGroup parent) {
 		
 		ImageView imageView;
@@ -51,7 +50,6 @@ public class LoadTileIcons extends BaseAdapter {
 		return imageView;
 	}
 	
-	// references to our images
 	public static Integer[] mThumbIds = { R.drawable.img_tile, R.drawable.img_tile, R.drawable.img_tile, R.drawable.img_tile, 
 			R.drawable.img_tile, R.drawable.img_tile, R.drawable.img_tile, R.drawable.img_tile,
 			R.drawable.img_tile, R.drawable.img_tile, R.drawable.img_tile, R.drawable.img_tile, 

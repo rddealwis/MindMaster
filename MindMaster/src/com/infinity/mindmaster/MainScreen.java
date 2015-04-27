@@ -1,42 +1,21 @@
 package com.infinity.mindmaster;
 
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import com.example.mindmaster.R;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.example.mindmaster.R;
-
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.PendingIntent.OnFinished;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.SyncStateContract.Helpers;
-import android.text.Editable;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainScreen extends Activity {
 	
@@ -57,7 +36,6 @@ public class MainScreen extends Activity {
 		registerClickCallBack();
 		
 		try {			
-			//lack of performance. should be changed.
 			if(fileAccess.FileRead("settings")==null){
 				for(int i=0;i<2;i++)
 				{
@@ -67,8 +45,6 @@ public class MainScreen extends Activity {
 			else
 			{
 				settingsArray=fileAccess.FileRead("settings");
-				
-				Log.d("chwtlkme ", settingsArray[0]+settingsArray[1]);
 			}
 			if(fileAccess.FileRead("highscore")==null){
 				highScoreArray =("Chintaka;10;Disni;20;Anuja;30;Rasanjana De Alwis;1000;").split(";");

@@ -3,7 +3,6 @@ package com.infinity.mindmaster;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -19,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.example.mindmaster.R;
@@ -97,7 +95,6 @@ public class GameSettings extends ActionBarActivity {
 			final ToggleButton tglBtn = (ToggleButton)itemView.findViewById(R.id.sound_ToggleButton);
 			tglBtn.setTextOn("ON");
 			tglBtn.setTextOff("OFF");
-			//tglBtn.setChecked(true);
 			Log.d("chwtlk valeu11112: ", MainScreen.highScoreArray[0]+MainScreen.highScoreArray[1]);
 			tglBtn.setChecked(MainScreen.settingsArray[0].equals("1"));			
 			
