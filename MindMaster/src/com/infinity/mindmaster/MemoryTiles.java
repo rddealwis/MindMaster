@@ -46,7 +46,8 @@ public class MemoryTiles extends ActionBarActivity {
 	GridView gridview = null;
 	Handler handlerClick = new Handler();
 	//final ImageView[] testImageViewClick = new ImageView[1];
-	MediaPlayer buttonSound = null;	
+	MediaPlayer buttonSound = null;
+	MediaPlayer highScoreSound = null;
 	FileAccess fileAccess=new FileAccess();
 	String soundStatus;
 	ImageView[] tilesImageView = new ImageView[16];
@@ -63,6 +64,7 @@ public class MemoryTiles extends ActionBarActivity {
 		
 		if(soundStatus.equals("1")){
 			buttonSound = MediaPlayer.create(MemoryTiles.this, R.raw.button_click);
+			highScoreSound = MediaPlayer.create(MemoryTiles.this, R.raw.congratulations);
 		}
 		
 		Button btn = (Button) findViewById(R.id.btnStart);
@@ -231,6 +233,7 @@ public class MemoryTiles extends ActionBarActivity {
 								else
 									pos=arraySize;
 								if(score>Integer.valueOf(MainScreen.highScoreArray[pos-1])){
+								highScoreSound.start();
 								GetUserName();
 								}
 								else{
