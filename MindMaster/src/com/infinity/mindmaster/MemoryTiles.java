@@ -61,7 +61,7 @@ public class MemoryTiles extends ActionBarActivity {
 		gridview = (GridView) findViewById(R.id.gridView_Tile);
 		soundStatus=MainScreen.settingsArray[0];
 		
-		if(soundStatus=="1"){
+		if(soundStatus.equals("1")){
 			buttonSound = MediaPlayer.create(MemoryTiles.this, R.raw.button_click);
 		}
 		
@@ -309,7 +309,7 @@ public class MemoryTiles extends ActionBarActivity {
 		ChangeColorOnUserClick(v);
 		//CheckUserInput(0);
 		
-		if(soundStatus=="1"){
+		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
 		if(CheckUserInput(0)){
@@ -323,7 +323,7 @@ public class MemoryTiles extends ActionBarActivity {
 		ChangeColorOnUserClick(v);
 		
 		
-		if(soundStatus=="1"){
+		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
 		
@@ -338,7 +338,7 @@ public class MemoryTiles extends ActionBarActivity {
 		ChangeColorOnUserClick(v);
 		//CheckUserInput(2);
 		
-		if(soundStatus=="1"){
+		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
 		if(CheckUserInput(2)){
@@ -352,7 +352,7 @@ public class MemoryTiles extends ActionBarActivity {
 		ChangeColorOnUserClick(v);
 		//CheckUserInput(3);
 		
-		if(soundStatus=="1"){
+		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
 		if(CheckUserInput(3)){
@@ -366,7 +366,7 @@ public class MemoryTiles extends ActionBarActivity {
 		ChangeColorOnUserClick(v);
 		//CheckUserInput(4);
 		
-		if(soundStatus=="1"){
+		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
 		if(CheckUserInput(4)){
@@ -380,7 +380,7 @@ public class MemoryTiles extends ActionBarActivity {
 		ChangeColorOnUserClick(v);
 		//CheckUserInput(5);
 		
-		if(soundStatus=="1"){
+		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
 		if(CheckUserInput(5)){
@@ -394,7 +394,7 @@ public class MemoryTiles extends ActionBarActivity {
 		ChangeColorOnUserClick(v);
 		//CheckUserInput(6);
 		
-		if(soundStatus=="1"){
+		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
 		if(CheckUserInput(6)){
@@ -408,7 +408,7 @@ public class MemoryTiles extends ActionBarActivity {
 		ChangeColorOnUserClick(v);
 		//CheckUserInput(7);
 		
-		if(soundStatus=="1"){
+		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
 		if(CheckUserInput(7)){
@@ -422,7 +422,7 @@ public class MemoryTiles extends ActionBarActivity {
 		ChangeColorOnUserClick(v);
 		//CheckUserInput(8);
 		
-		if(soundStatus=="1"){
+		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
 		if(CheckUserInput(8)){
@@ -436,7 +436,7 @@ public class MemoryTiles extends ActionBarActivity {
 		ChangeColorOnUserClick(v);
 		//CheckUserInput(9);
 		
-		if(soundStatus=="1"){
+		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
 		if(CheckUserInput(9)){
@@ -450,7 +450,7 @@ public class MemoryTiles extends ActionBarActivity {
 		ChangeColorOnUserClick(v);
 		//CheckUserInput(10);
 		
-		if(soundStatus=="1"){
+		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
 		if(CheckUserInput(10)){
@@ -464,7 +464,7 @@ public class MemoryTiles extends ActionBarActivity {
 		ChangeColorOnUserClick(v);
 		//CheckUserInput(11);
 		
-		if(soundStatus=="1"){
+		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
 		if(CheckUserInput(11)){
@@ -478,7 +478,7 @@ public class MemoryTiles extends ActionBarActivity {
 		ChangeColorOnUserClick(v);
 		//CheckUserInput(12);
 		
-		if(soundStatus=="1"){
+		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
 		if(CheckUserInput(12)){
@@ -492,7 +492,7 @@ public class MemoryTiles extends ActionBarActivity {
 		ChangeColorOnUserClick(v);
 		//CheckUserInput(13);
 		
-		if(soundStatus=="1"){
+		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
 		if(CheckUserInput(13)){
@@ -506,7 +506,7 @@ public class MemoryTiles extends ActionBarActivity {
 		ChangeColorOnUserClick(v);
 		//CheckUserInput(14);
 		
-		if(soundStatus=="1"){
+		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
 		if(CheckUserInput(14)){
@@ -520,7 +520,7 @@ public class MemoryTiles extends ActionBarActivity {
 		ChangeColorOnUserClick(v);
 		//CheckUserInput(15);
 		
-		if(soundStatus=="1"){
+		if(soundStatus.equals("1")){
 			buttonSound.start();
 		}
 		if(CheckUserInput(15)){
