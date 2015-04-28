@@ -461,12 +461,19 @@ public class MemoryTiles extends ActionBarActivity {
 
 		alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 		public void onClick(DialogInterface dialog, int whichButton) {
-		  Editable name = input.getText();
+		  Editable name;
+		  if(input.getText().length>0)
+		  {
+			name= input.getText();
+		  }
+		  else
+		  {
+			name="Anonymous";
+		  }
 		  IncreaseArraySize();
 		  MainScreen.highScoreArray[MainScreen.highScoreArray.length-1]=String.valueOf(name);
 		  IncreaseArraySize();
 		  MainScreen.highScoreArray[MainScreen.highScoreArray.length-1]=String.valueOf(score);
-
 		  WriteHighscoreFile();
 
 		 finish();
@@ -474,15 +481,6 @@ public class MemoryTiles extends ActionBarActivity {
 		});
 		
 		alert.show();
-		AlertDialog dialog = alert.create();
-		dialog.setOnShowListener(new OnShowListener() {
-
-		    @Override
-		    public void onShow(DialogInterface dialog) {
-		        if(true)
-		        ((AlertDialog)dialog).getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
-		    }
-		});
 		
 		
 	}
