@@ -215,7 +215,9 @@ public class MemoryTiles extends ActionBarActivity {
 								else
 									pos=arraySize;
 								if(score>Integer.valueOf(MainScreen.highScoreArray[pos-1])){
-								highScoreSound.start();
+									if(soundStatus.equals("1")){										
+									highScoreSound.start();
+									}
 								GetUserName();
 								}
 								else{
