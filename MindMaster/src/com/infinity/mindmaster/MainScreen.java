@@ -28,6 +28,7 @@ public class MainScreen extends Activity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_screen);
 				
@@ -46,10 +47,10 @@ public class MainScreen extends Activity {
 			{
 				settingsArray=fileAccess.FileRead("settings");
 			}
+			
 			if(fileAccess.FileRead("highscore")==null){
-				highScoreArray =("Chintaka;10;Disni;20;Anuja;30;Rasanjana De Alwis;1000;").split(";");
-				MemoryTiles.SortArray();
-								
+				highScoreArray =("Anonymous;0;Anonymous;0;Anonymous;0;Anonymous;0;").split(";");
+				MemoryTiles.SortArray();								
 			}
 			else
 			{
@@ -58,7 +59,7 @@ public class MainScreen extends Activity {
 			}
 			
 		} catch (IOException e) {
-			Log.d("Error error error: ", e.toString());
+			Log.d("Error: ", e.toString());
 		}		
 	}		
 
@@ -94,6 +95,7 @@ public class MainScreen extends Activity {
 		public View getView(int position, View convertView, ViewGroup parent) {
 			
 			View itemView = convertView;
+			
 			if(itemView == null){
 				itemView = getLayoutInflater().inflate(R.layout.main_screen_item_view,parent, false);				
 			}
@@ -113,6 +115,7 @@ public class MainScreen extends Activity {
 	private void registerClickCallBack() {
 		
 		ListView listView = (ListView)findViewById(R.id.listViewMain);
+		
 		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 			@Override

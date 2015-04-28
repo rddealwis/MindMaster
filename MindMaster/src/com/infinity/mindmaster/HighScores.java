@@ -31,6 +31,7 @@ public class HighScores extends ActionBarActivity {
 	}
 	
 	private void populateHighScoreItems() {
+		
 		MemoryTiles.SortArray();
 		int arraySize=MainScreen.highScoreArray.length;
 		int countSize=0;
@@ -42,8 +43,7 @@ public class HighScores extends ActionBarActivity {
 		
 		for(int i=0; i<countSize; i++){
 			highScoreItems.add(new HighScoreItems(MainScreen.highScoreArray[i], MainScreen.highScoreArray[i+1]));
-			i++;
-			
+			i++;			
 		}	
 	}	
 	
@@ -66,6 +66,7 @@ public class HighScores extends ActionBarActivity {
 		public View getView(int position, View convertView, ViewGroup parent) {
 			
 			View itemView = convertView;
+			
 			if(itemView == null){
 				itemView = getLayoutInflater().inflate(R.layout.high_score_item_view,parent, false);				
 			}
@@ -79,12 +80,12 @@ public class HighScores extends ActionBarActivity {
 			makeText1.setText(currentItem.getIconID());
 			
 			return itemView;			
-		}		
-		
+		}				
 	}
 	
 	@Override
 	public boolean dispatchTouchEvent(MotionEvent ev){
+		
 	   if(ev.getAction()==MotionEvent.ACTION_MOVE)
 	      return true;
 	   return super.dispatchTouchEvent(ev);

@@ -4,8 +4,6 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import com.example.mindmaster.R;
-
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.method.ScrollingMovementMethod;
@@ -13,6 +11,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import com.example.mindmaster.R;
 
 public class Help extends ActionBarActivity {
 	
@@ -49,6 +49,7 @@ public class Help extends ActionBarActivity {
 		String strLine = null;
 
 		try {
+			
 			while ((strLine = dataIO.readLine()) != null) {
 				sBuffer.append(strLine + "\n");
 			}
@@ -58,7 +59,6 @@ public class Help extends ActionBarActivity {
 
 			return sBuffer.toString();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

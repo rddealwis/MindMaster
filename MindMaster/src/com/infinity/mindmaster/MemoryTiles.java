@@ -114,7 +114,6 @@ public class MemoryTiles extends ActionBarActivity {
 
 	public void GenerateRandomValues(int amount) {
 
-		// amount=4;
 		try{
 			randomNumbers.removeAll(randomNumbers);
 			checkCount=0;
@@ -183,7 +182,7 @@ public class MemoryTiles extends ActionBarActivity {
 	        handler.postDelayed(new Runnable() { 
 	             public void run() { 
 	               testImageView[0].setImageResource(R.drawable.img_tile);
-	               //if this is the last square setEnable true
+	               
 	               if(finalLast){
 	            	   EnableDisableImageViews(true);
 	               }
@@ -199,14 +198,14 @@ public class MemoryTiles extends ActionBarActivity {
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 		
 		if (checkCount < randomNumbers.size()) {
-			if (position != (Integer) randomNumbers.get(checkCount)) {					
+			if (position != (Integer) randomNumbers.get(checkCount)) {		
+				
 				alertDialog.setTitle("Game Over");
 				alertDialog.setMessage("Sorry, You got it wrong! Try Again! Your score is "+score+"!!!");
 				alertDialog.setIcon(R.drawable.logo);
-				alertDialog.setPositiveButton("OK",
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog,
-									int which) {
+				alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+					
+							public void onClick(DialogInterface dialog, int which) {
 								checkCount=0;
 								int arraySize=MainScreen.highScoreArray.length;
 								int pos=0;								
@@ -214,9 +213,10 @@ public class MemoryTiles extends ActionBarActivity {
 									pos=8;
 								else
 									pos=arraySize;
+								
 								if(score>Integer.valueOf(MainScreen.highScoreArray[pos-1])){
 									if(soundStatus.equals("1")){										
-									highScoreSound.start();
+										highScoreSound.start();
 									}
 								GetUserName();
 								}
@@ -229,14 +229,11 @@ public class MemoryTiles extends ActionBarActivity {
 			} else {
 				final TextView changeScore = (TextView) findViewById(R.id.textViewScore);
 				changeScore.setText("Score: "+(++score));
+				
 				if (checkCount == randomNumbers.size() - 1) {
-					Toast.makeText(MemoryTiles.this,
-							"Congradulations! Next Level!!!",
-							Toast.LENGTH_SHORT).show();
-					
+					Toast.makeText(MemoryTiles.this, "Congradulations! Next Level!!!",Toast.LENGTH_SHORT).show();				
 
-					return true;
-										
+					return true;										
 				}
 			}
 		}
@@ -272,8 +269,7 @@ public class MemoryTiles extends ActionBarActivity {
 	}
 	
 	public void imageViewCol1Clicked(View v)
-	{
-		
+	{		
 		ChangeColorOnUserClick(v);		
 		if(soundStatus.equals("1")){
 			buttonSound.start();
@@ -453,25 +449,24 @@ public class MemoryTiles extends ActionBarActivity {
 		AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
 		alert.setTitle("You achieved a High Score!!!");
-		alert.setMessage("Please give your Name:");
-
+		alert.setMessage("Please enter your Name:");
 		
 		final EditText input = new EditText(this);
 		alert.setView(input);
 
 		alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+			
 		public void onClick(DialogInterface dialog, int whichButton) {
-		  Editable name;
-		  if(input.getText().length>0)
-		  {
-			name= input.getText();
-		  }
-		  else
-		  {
+		  String name;
+		  
+		  if(input.getText().length()>0){
+			name= String.valueOf(input.getText());
+		  } else {
 			name="Anonymous";
 		  }
+		  
 		  IncreaseArraySize();
-		  MainScreen.highScoreArray[MainScreen.highScoreArray.length-1]=String.valueOf(name);
+		  MainScreen.highScoreArray[MainScreen.highScoreArray.length-1]=name;
 		  IncreaseArraySize();
 		  MainScreen.highScoreArray[MainScreen.highScoreArray.length-1]=String.valueOf(score);
 		  WriteHighscoreFile();
@@ -480,9 +475,7 @@ public class MemoryTiles extends ActionBarActivity {
 		  }
 		});
 		
-		alert.show();
-		
-		
+		alert.show();		
 	}
 	
 	public void WriteHighscoreFile(){
@@ -490,19 +483,18 @@ public class MemoryTiles extends ActionBarActivity {
 		String value="";
 
 		for(int i=0; i<MainScreen.highScoreArray.length;i++){
-	    value+=MainScreen.highScoreArray[i]+";"+MainScreen.highScoreArray[i+1]+";";
-	    i++;
+			value+=MainScreen.highScoreArray[i]+";"+MainScreen.highScoreArray[i+1]+";";
+			i++;
 		}
+		
 	    try {
 			fileAccess.FileWrite("highscore", value);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-	public static void SortArray(){
-		
+	public static void SortArray(){		
 		 
 	     int temp;   
 	     String temp2;

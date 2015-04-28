@@ -3,6 +3,7 @@ package com.infinity.mindmaster;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -43,13 +44,13 @@ public class GameSettings extends ActionBarActivity {
 	
 	@Override
 	public void onBackPressed() {
+		
 	    String value="";
 	    value=MainScreen.settingsArray[0]+";"+MainScreen.settingsArray[1]+";";
+	    
 	    try {
 			fileAccess.FileWrite("settings", value);
-			Log.d("chwtlk valeu: ", value);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	    super.onBackPressed();
@@ -80,6 +81,7 @@ public class GameSettings extends ActionBarActivity {
 		public View getView(int position, View convertView, ViewGroup parent) {
 			
 			View itemView = convertView;
+			
 			if(itemView == null){
 				itemView = getLayoutInflater().inflate(R.layout.settings_sound_item_view,parent, false);				
 			}
@@ -95,7 +97,6 @@ public class GameSettings extends ActionBarActivity {
 			final ToggleButton tglBtn = (ToggleButton)itemView.findViewById(R.id.sound_ToggleButton);
 			tglBtn.setTextOn("ON");
 			tglBtn.setTextOff("OFF");
-			Log.d("chwtlk valeu11112: ", MainScreen.highScoreArray[0]+MainScreen.highScoreArray[1]);
 			tglBtn.setChecked(MainScreen.settingsArray[0].equals("1"));			
 			
 			if(tglBtn.isChecked()){	            		
@@ -147,6 +148,7 @@ public class GameSettings extends ActionBarActivity {
 		public View getView(int position, View convertView, ViewGroup parent) {
 			
 			View itemView = convertView;
+			
 			if(itemView == null){
 				itemView = getLayoutInflater().inflate(R.layout.settings_difficulty_item_view,parent, false);				
 			}

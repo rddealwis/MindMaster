@@ -37,7 +37,6 @@ public class LoadTileIcons extends BaseAdapter {
 		int tileHeight = (int) (mContext.getResources().getDimension(R.dimen.activity_tile_height));
 		
 		if (convertView == null) {
-			// if it's not recycled, initialize some attributes
 			imageView = new ImageView(mContext);
 			imageView.setLayoutParams(new GridView.LayoutParams(tileWidth, tileHeight));
 			imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
